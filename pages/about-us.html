@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - egConvert Hindi Font Conversion Tools</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Learn about egConvert - your trusted partner for Hindi font conversion between Unicode, Krutidev, Mangal, and Chanakya fonts.">
+    <meta name="keywords" content="about egconvert, hindi font tools, unicode converter, krutidev converter, font conversion about">
+    <meta name="author" content="egConvert">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/img/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="../assets/img/logo.png">
+    <link rel="preload" href="../assets/img/logo.png" as="image">
+    <link rel="icon" sizes="192x192" href="../assets/img/logo.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://egconvert.com/pages/about-us.html">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="About Us - egConvert Hindi Font Conversion Tools">
+    <meta property="og:description" content="Learn about egConvert - your trusted partner for Hindi font conversion">
+    <meta property="og:url" content="https://egconvert.com/pages/about-us.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#2563EB',
+                        accent: '#1D4ED8',
+                        light: '#F8FAFC',
+                        dark: '#1E293B'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+
+        * {
+            font-family: "Lexend", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+        }
+
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* Focus styles for accessibility */
+        button:focus, a:focus {
+            outline: 2px solid #3B82F6;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-3">
+                <div class="flex items-center space-x-2">
+                    <a href="../index.html">
+                        <img src="../assets/img/logo.png" alt="egConvert Logo" class="w-10 h-10 rounded-lg">
+                    </a>
+                    <a href="../index.html" class="text-xl font-bold text-primary">egConvert</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-500 hover:text-primary focus:outline-none"
+                        aria-label="Toggle navigation menu">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+
+                <!-- Desktop menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../index.html" class="text-gray-600 hover:text-primary font-medium">Home</a>
+
+                    <div class="relative group">
+                        <button class="text-gray-600 hover:text-primary font-medium flex items-center"
+                            aria-expanded="false" aria-haspopup="true">
+                            Font Converter
+                            <i class="fas fa-chevron-down ml-1 text-sm"></i>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-xl rounded-lg p-4 w-64 z-50">
+                            <div class="grid grid-cols-1 gap-2">
+                                <a href="../index.html" class="px-4 py-2 hover:bg-blue-50 rounded-md">Unicode to Krutidev</a>
+                                <a href="../fonts/krutidev-to-unicode.html" class="px-4 py-2 hover:bg-blue-50 rounded-md">Krutidev to Unicode</a>
+                                <div class="border-t my-1"></div>
+                                <a href="../fonts/mangal-to-krutidev.html" class="px-4 py-2 hover:bg-blue-50 rounded-md">Mangal to Krutidev</a>
+                                <a href="../fonts/krutidev-to-mangal.html" class="px-4 py-2 hover:bg-blue-50 rounded-md">Krutidev to Mangal</a>
+                                <div class="border-t my-1"></div>
+                                <a href="../fonts/unicode-to-chanakya.html" class="px-4 py-2 hover:bg-blue-50 rounded-md">Unicode to Chanakya</a>
+                                <a href="../fonts/chanakya-to-unicode.html" class="px-4 py-2 hover:bg-blue-50 rounded-md">Chanakya to Unicode</a>
+                                <div class="border-t my-1"></div>
+                                <a href="../fonts/krutidev-to-chanakya.html" class="px-4 py-2 hover:bg-blue-50 rounded-md">Krutidev to Chanakya</a>
+                                <a href="../fonts/chanakya-to-krutidev.html" class="px-4 py-2 hover:bg-blue-50 rounded-md">Chanakya to Krutidev</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile menu (hidden by default) -->
+            <div id="mobile-menu" class="hidden md:hidden py-4 border-t">
+                <a href="../index.html" class="block py-2 text-gray-600 hover:text-primary font-medium">Home</a>
+
+                <div class="py-2">
+                    <button id="converter-toggle"
+                        class="flex items-center justify-between w-full text-gray-600 font-medium"
+                        aria-expanded="false">
+                        <span>Font Converter</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="converter-menu" class="hidden pl-4 mt-2">
+                        <a href="../index.html" class="block py-2 text-sm">Unicode to Krutidev</a>
+                        <a href="../fonts/krutidev-to-unicode.html" class="block py-2 text-sm">Krutidev to Unicode</a>
+                        <a href="../fonts/mangal-to-krutidev.html" class="block py-2 text-sm">Mangal to Krutidev</a>
+                        <a href="../fonts/krutidev-to-mangal.html" class="block py-2 text-sm">Krutidev to Mangal</a>
+                        <a href="../fonts/unicode-to-chanakya.html" class="block py-2 text-sm">Unicode to Chanakya</a>
+                        <a href="../fonts/chanakya-to-unicode.html" class="block py-2 text-sm">Chanakya to Unicode</a>
+                        <a href="../fonts/krutidev-to-chanakya.html" class="block py-2 text-sm">Krutidev to Chanakya</a>
+                        <a href="../fonts/chanakya-to-krutidev.html" class="block py-2 text-sm">Chanakya to Krutidev</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Header Section -->
+        <header class="text-center mb-12 animate-fadeIn">
+            <h1 class="text-3xl md:text-4xl font-bold text-dark mb-4">About egConvert</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Your trusted partner for Hindi font conversion between Unicode, Krutidev, Mangal, and Chanakya fonts</p>
+        </header>
+
+        <!-- About Content -->
+        <section class="max-w-4xl mx-auto bg-white rounded-xl shadow-md p-6 mb-12 animate-fadeIn">
+            <div class="prose max-w-none">
+                <h2 class="text-2xl font-semibold text-dark mb-4">Our Mission</h2>
+                <p class="mb-6 text-gray-700">At egConvert, our mission is to simplify Hindi font conversion for everyone. We understand the challenges faced by users who need to work with different Hindi font formats, and we've created a comprehensive set of tools to make these conversions seamless and efficient.</p>
+
+                <h2 class="text-2xl font-semibold text-dark mb-4">What We Offer</h2>
+                <p class="mb-4 text-gray-700">We provide a complete suite of Hindi font conversion tools, including:</p>
+                <ul class="list-disc pl-5 mb-6 text-gray-700 space-y-2">
+                    <li>Unicode to Krutidev converter</li>
+                    <li>Krutidev to Unicode converter</li>
+                    <li>Mangal to Krutidev converter</li>
+                    <li>Krutidev to Mangal converter</li>
+                    <li>Unicode to Chanakya converter</li>
+                    <li>Chanakya to Unicode converter</li>
+                    <li>Krutidev to Chanakya converter</li>
+                    <li>Chanakya to Krutidev converter</li>
+                </ul>
+
+                <h2 class="text-2xl font-semibold text-dark mb-4">Our Story</h2>
+                <p class="mb-6 text-gray-700">Founded in 2023, egConvert was created to address the font compatibility issues that many Hindi content creators, government employees, students, and professionals face daily. Our team of developers and language experts work tirelessly to ensure accurate and reliable conversions between all major Hindi font formats.</p>
+
+                <h2 class="text-2xl font-semibold text-dark mb-4">Why Choose Us?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-bolt text-primary text-xl mr-3"></i>
+                            <h3 class="text-lg font-semibold">Fast Conversion</h3>
+                        </div>
+                        <p class="text-gray-700">Our tools provide instant results, saving you valuable time.</p>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-shield-alt text-primary text-xl mr-3"></i>
+                            <h3 class="text-lg font-semibold">100% Secure</h3>
+                        </div>
+                        <p class="text-gray-700">Your data never leaves your browser and is never stored on our servers.</p>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-check-circle text-primary text-xl mr-3"></i>
+                            <h3 class="text-lg font-semibold">Accurate Results</h3>
+                        </div>
+                        <p class="text-gray-700">We ensure precise conversions that maintain the integrity of your text.</p>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-laptop text-primary text-xl mr-3"></i>
+                            <h3 class="text-lg font-semibold">Cross-Platform</h3>
+                        </div>
+                        <p class="text-gray-700">Our tools work seamlessly on desktop, tablet, and mobile devices.</p>
+                    </div>
+                </div>
+
+                <h2 class="text-2xl font-semibold text-dark mb-4">Our Commitment</h2>
+                <p class="mb-6 text-gray-700">We are committed to providing free, high-quality font conversion tools to the Hindi-speaking community. We continuously improve our tools based on user feedback and technological advancements to ensure we remain the premier destination for Hindi font conversion.</p>
+
+                <div class="bg-primary/10 p-6 rounded-xl mt-8">
+                    <h2 class="text-2xl font-semibold text-dark mb-4 text-center">Have Questions?</h2>
+                    <p class="text-center text-gray-700 mb-4">We're here to help you with all your Hindi font conversion needs.</p>
+                    <div class="text-center">
+                        <a href="contact-us.html" class="inline-block bg-primary hover:bg-secondary text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                            Contact Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="../assets/img/logo.png" alt="egConvert Logo" class="w-10 h-10 rounded-lg mr-2">
+                        <span class="text-xl font-bold text-white">egConvert</span>
+                    </div>
+                    <p class="text-gray-300">The fastest and most reliable tool for converting between Hindi fonts online.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../index.html" class="text-gray-300 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="about-us.html" class="text-gray-300 hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="contact-us.html" class="text-gray-300 hover:text-white transition duration-300">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="privacy-policy.html" class="text-gray-300 hover:text-white transition duration-300">Privacy Policy</a></li>
+                        <li><a href="terms-and-conditions.html" class="text-gray-300 hover:text-white transition duration-300">Terms & Conditions</a></li>
+                        <li><a href="disclaimer.html" class="text-gray-300 hover:text-white transition duration-300">Disclaimer</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition duration-300" aria-label="Follow us on Facebook">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition duration-300" aria-label="Follow us on Twitter">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition duration-300" aria-label="Follow us on Instagram">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition duration-300" aria-label="Follow us on LinkedIn">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 egConvert. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function () {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Mobile converter menu toggle
+        document.getElementById('converter-toggle').addEventListener('click', function () {
+            document.getElementById('converter-menu').classList.toggle('hidden');
+        });
+    </script>
+</body>
+
+</html>
