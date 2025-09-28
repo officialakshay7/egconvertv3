@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Converter - egConvert</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Image Converter - egConvert">
+    <meta name="description"
+        content="Convert and download images online. Upload single or multiple images, preview them, remove unwanted files, and download the image or a ZIP of all images.">
+    <meta name="keywords"
+        content="image converter, image downloader, convert images, download images, zip images, jpg to png, png to jpg, image preview, batch image download">
+    <meta name="author" content="egConvert">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="googlebot" content="index, follow">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://egconvert.com">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Image Converter - egConvert">
+    <meta property="og:description"
+        content="Convert and download images online. Upload single or multiple images, preview them, remove unwanted files, and download the image or a ZIP of all images.">
+    <meta property="og:url" content="https://egconvert.com">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://egconvert.com/assets/img/logo.png">
+    <meta property="og:site_name" content="egConvert">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Image Converter - egConvert">
+    <meta name="twitter:description"
+        content="Convert and download images online. Upload single or multiple images, preview them, remove unwanted files, and download the image or a ZIP of all images.">
+    <meta name="twitter:image" content="https://egconvert.com/assets/img/twitter.png">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Image Converter",
+      "url": "https://egconvert.com",
+      "description": "Upload single or multiple images, preview them and download as individual files or a ZIP archive.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "permissions": "browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "egConvert"
+      }
+    }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NLWQ6H5DPK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-NLWQ6H5DPK');
+    </script>
+
+    <!-- Google tag Google Ads (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17579354267">
+    </script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'AW-17579354267');
+    </script>
+
+    <!-- Event snippet for Page view conversion page -->
+    <script>
+        gtag('event', 'conversion', {
+            'send_to': 'AW-17579354267/P_x5CP23nKIbEJvRvr5B',
+            'value': 1.0,
+            'currency': 'INR'
+        });
+    </script>
+
+
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/img/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="../assets/img/logo.png">
+    <link rel="preload" href="../assets/img/logo.png" as="image">
+    <link rel="icon" sizes="192x192" href="../assets/img/logo.png">
+
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#2563EB',
+                        accent: '#1D4ED8',
+                        light: '#F8FAFC',
+                        dark: '#1E293B'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+
+        * {
+            font-family: "Lexend", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+        }
+
+        .tk {
+            width: fit-content;
+            display: inline-block;
+            text-decoration: none;
+            color: black;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        textarea::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        textarea::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        textarea::-webkit-scrollbar-thumb {
+            background: #c5c5c5;
+            border-radius: 10px;
+        }
+
+        textarea::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+
+        .breadcrumb {
+            padding: 8px 15px;
+            margin-bottom: 20px;
+            list-style: none;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+        }
+
+        .breadcrumb li {
+            display: inline;
+        }
+
+        .breadcrumb li+li:before {
+            padding: 0 5px;
+            color: #ccc;
+            content: "/\00a0";
+        }
+
+        button:focus,
+        a:focus,
+        textarea:focus,
+        input:focus {
+            outline: 2px solid #3B82F6;
+            outline-offset: 2px;
+        }
+
+        .preview-img {
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+    <!-- NAVBAR (original) -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-3">
+
+                <div class="flex items-center space-x-2">
+                    <a href="index.html">
+                        <img src="../assets/img/logo.png" alt="egConvert Logo" class="w-10 h-10 rounded-lg">
+                    </a>
+                    <a href="index.html" class="text-xl font-bold text-primary">egConvert</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-500 hover:text-primary focus:outline-none"
+                        aria-label="Toggle navigation menu">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+
+                <!-- Desktop menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-primary font-medium">Home</a>
+
+                    <div class="relative group">
+                        <button class="text-gray-600 hover:text-primary font-medium flex items-center"
+                            aria-expanded="false" aria-haspopup="true">
+                            Font Converter
+                            <i class="fas fa-chevron-down ml-1 text-sm"></i>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-xl rounded-lg p-4 w-64 z-50">
+                            <div class="grid grid-cols-1 gap-2">
+                                <a href="index.html" class="px-4 py-2 hover:bg-blue-50 rounded-md">Unicode to
+                                    Krutidev</a>
+                                <a href="../fonts/krutidev-to-unicode.html"
+                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Krutidev to Unicode</a>
+                                <div class="border-t my-1"></div>
+                                <a href="../fonts/mangal-to-krutidev.html"
+                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Mangal
+                                    to Krutidev</a>
+                                <a href="../fonts/krutidev-to-mangal.html"
+                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Krutidev
+                                    to Mangal</a>
+                                <div class="border-t my-1"></div>
+                                <a href="../fonts/unicode-to-chanakya.html"
+                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Unicode
+                                    to Chanakya</a>
+                                <a href="../fonts/chanakya-to-unicode.html"
+                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Chanakya to Unicode</a>
+                                <div class="border-t my-1"></div>
+                                <a href="../fonts/krutidev-to-chanakya.html"
+                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Krutidev to Chanakya</a>
+                                <a href="../fonts/chanakya-to-krutidev.html"
+                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Chanakya to Krutidev</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- File Converter menu -->
+                    <div class="relative group">
+                        <button class="text-gray-600 hover:text-primary font-medium flex items-center"
+                            aria-expanded="false" aria-haspopup="true">
+                            File Converter
+                            <i class="fas fa-chevron-down ml-1 text-sm"></i>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-xl rounded-lg p-4 w-64 z-50">
+                            <div class="grid grid-cols-1 gap-2">
+                                <a href="#" class="px-4 py-2 hover:bg-blue-50 rounded-md">Image Converter</a>
+                                <a href="#" class="px-4 py-2 hover:bg-blue-50 rounded-md">Image Compressor</a>
+                                <a href="#" class="px-4 py-2 hover:bg-blue-50 rounded-md">Image Resizer</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile menu (hidden by default) -->
+            <div id="mobile-menu" class="hidden md:hidden py-4 border-t">
+                <a href="index.html" class="block py-2 text-primary font-medium">Home</a>
+
+                <div class="py-2">
+                    <button id="converter-toggle"
+                        class="flex items-center justify-between w-full text-gray-600 font-medium"
+                        aria-expanded="false">
+                        <span>Font Converter</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="converter-menu" class="hidden pl-4 mt-2">
+                        <a href="index.html" class="block py-2 text-sm">Unicode to Krutidev</a>
+                        <a href="../fonts/krutidev-to-unicode.html" class="block py-2 text-sm">Krutidev to Unicode</a>
+                        <a href="../fonts/mangal-to-krutidev.html" class="block py-2 text-sm">Mangal to Krutidev</a>
+                        <a href="../fonts/krutidev-to-mangal.html" class="block py-2 text-sm">Krutidev to Mangal</a>
+                        <a href="../fonts/unicode-to-chanakya.html" class="block py-2 text-sm">Unicode to Chanakya</a>
+                        <a href="../fonts/chanakya-to-unicode.html" class="block py-2 text-sm">Chanakya to Unicode</a>
+                        <a href="../fonts/krutidev-to-chanakya.html" class="block py-2 text-sm">Krutidev to Chanakya</a>
+                        <a href="../fonts/chanakya-to-krutidev.html" class="block py-2 text-sm">Chanakya to Krutidev</a>
+                    </div>
+
+                    <div class="py-2">
+                        <button id="fileconv-toggle"
+                            class="flex items-center justify-between w-full text-gray-600 font-medium"
+                            aria-expanded="false">
+                            <span>File Converter</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="fileconv-menu" class="hidden pl-4 mt-2">
+                            <a href="#" class="block py-2 text-sm">Image Converter</a>
+                            <a href="#" class="block py-2 text-sm">Image Compressor</a>
+                            <a href="#" class="block py-2 text-sm">Image Resizer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Header Section -->
+        <header class="text-center mb-8 animate-fadeIn">
+            <h1 class="text-3xl md:text-4xl font-bold text-dark mb-4">Image Converter</h1>
+            <p class="text-lg text-gray-600 max-w-xl mx-auto">Upload single or multiple images, preview them,
+                remove unwanted files, then download the single image or a ZIP containing all selected images.</p>
+        </header>
+
+        <!-- Converter Section -->
+        <section class="mb-12 animate-fadeIn">
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Upload + Drop area -->
+                    <div class="col-span-1 lg:col-span-2">
+                        <h2 class="text-xl font-semibold text-dark mb-4 flex items-center">
+                            <i class="fas fa-image mr-2 text-primary" aria-hidden="true"></i>
+                            Upload Images
+                        </h2>
+
+                        <label for="fileInput"
+                            class="group relative flex flex-col items-center justify-center border-2 border-dashed border-gray-200 rounded-lg p-6 cursor-pointer hover:border-primary transition-colors focus:outline-none"
+                            tabindex="0">
+                            <input id="fileInput" type="file" accept="image/*" multiple class="sr-only" />
+                            <div class="text-center">
+                                <i
+                                    class="fas fa-cloud-upload-alt text-3xl text-gray-400 group-hover:text-primary mb-3"></i>
+                                <p class="text-sm text-gray-600">Click to upload or drag & drop images here</p>
+                                <p class="text-xs text-gray-400 mt-2">Supported: JPG, PNG, WEBP, GIF, BMP</p>
+                            </div>
+                        </label>
+
+                        <p class="text-xs text-gray-500 mt-3">Tip: You can drag & drop files into the upload box or
+                            select multiple files from your system.</p>
+
+                        <!-- Properly placed Output options select (now between droparea and buttons) -->
+                        <div class="mt-4">
+                            <label for="outputFormat" class="text-sm font-medium text-gray-700">Output format</label>
+                            <div class="mt-2 grid grid-cols-1 sm:grid-cols-1 gap-2">
+                                <select id="outputFormat"
+                                    class="block w-full rounded-md border border-gray-200 px-3 py-2 shadow-sm focus:border-primary focus:ring focus:ring-primary/20">
+                                    <option selected value="image/png">PNG</option>
+                                    <option value="image/jpeg">JPEG</option>
+                                    <option value="image/webp">WEBP</option>
+                                    <option value="original">Original</option>
+                                </select>
+                                <p class="text-xs text-gray-400">Choose the output format for downloaded images.
+                                    "Original" keeps the original file format.</p>
+                            </div>
+                        </div>
+
+                        <!-- Controls -->
+                        <div class="flex items-center gap-3 mt-4">
+                            <button id="clearAllBtn"
+                                class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-lg font-medium transition duration-300 disabled:opacity-50"
+                                disabled>
+                                <i class="fas fa-trash-alt mr-2"></i> Clear All
+                            </button>
+
+                            <button id="downloadBtn"
+                                class="bg-primary hover:bg-secondary text-white px-4 py-2 rounded-lg font-medium transition duration-300 disabled:opacity-50"
+                                disabled>
+                                <i class="fas fa-download mr-2"></i>
+                                <span id="downloadBtnText">Download</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Preview list -->
+                    <div class="col-span-1 lg:col-span-1">
+                        <h2 class="text-xl font-semibold text-dark mb-4 flex items-center">
+                            <i class="fas fa-photo-film mr-2 text-primary" aria-hidden="true"></i>
+                            Files (Preview & Manage)
+                        </h2>
+
+                        <div id="filesContainer" class="space-y-3 max-h-96 overflow-y-auto pr-2">
+                            <div id="emptyState" class="text-center text-gray-400 py-8 border border-dashed rounded-lg">
+                                <i class="fas fa-file-image text-3xl mb-2"></i>
+                                <p>No images added yet. Add files to see previews and options.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Info & Resources Section -->
+        <section class="mb-16">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Main Content -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+                        <h2 class="text-xl font-semibold text-dark mb-4">How to Use</h2>
+                        <ol class="list-decimal pl-5 space-y-2 text-gray-700">
+                            <li>Click the upload box or drag & drop images.</li>
+                            <li>Use the preview list to remove any image you don't want.</li>
+                            <li>Select desired output format from the "Output format" dropdown.</li>
+                            <li>Click <strong>Download</strong>. If one image is present it'll download directly; if
+                                multiple images are present a ZIP will be created and downloaded.</li>
+                        </ol>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <h2 class="text-xl font-semibold text-dark mb-4">Notes</h2>
+                        <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                            <li>This tool runs entirely in your browser—no files are uploaded to a server.</li>
+                            <li>Large numbers of very big images may take time to ZIP; the browser must process them
+                                client-side.</li>
+                            <li>For animated GIFs the conversion to PNG/JPEG/WEBP will save only the first frame.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-md p-6 mt-8">
+                        <h2 class="text-xl font-semibold text-dark mb-4">Other Conversion Tools</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <a href="index.html"
+                                class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-blue-50 transition duration-300">
+                                <i class="fas fa-exchange-alt text-primary mr-3" aria-hidden="true"></i>
+                                <span>Unicode to Krutidev</span>
+                            </a>
+                            <a href="fonts/krutidev-to-unicode.html"
+                                class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-blue-50 transition duration-300">
+                                <i class="fas fa-exchange-alt text-primary mr-3" aria-hidden="true"></i>
+                                <span>Krutidev to Unicode</span>
+                            </a>
+                            <a href="fonts/mangal-to-krutidev.html"
+                                class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-blue-50 transition duration-300">
+                                <i class="fas fa-exchange-alt text-primary mr-3" aria-hidden="true"></i>
+                                <span>Mangal to Krutidev</span>
+                            </a>
+                            <a href="fonts/krutidev-to-mangal.html"
+                                class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-blue-50 transition duration-300">
+                                <i class="fas fa-exchange-alt text-primary mr-3" aria-hidden="true"></i>
+                                <span>Krutidev to Mangal</span>
+                            </a>
+                            <a href="fonts/unicode-to-chanakya.html"
+                                class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-blue-50 transition duration-300">
+                                <i class="fas fa-exchange-alt text-primary mr-3" aria-hidden="true"></i>
+                                <span>Unicode to Chanakya</span>
+                            </a>
+                            <a href="fonts/chanakya-to-unicode.html"
+                                class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-blue-50 transition duration-300">
+                                <i class="fas fa-exchange-alt text-primary mr-3" aria-hidden="true"></i>
+                                <span>Chanakya to Unicode</span>
+                            </a>
+                            <a href="fonts/krutidev-to-chanakya.html"
+                                class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-blue-50 transition duration-300">
+                                <i class="fas fa-exchange-alt text-primary mr-3" aria-hidden="true"></i>
+                                <span>Krutidev to Chanakya</span>
+                            </a>
+                            <a href="fonts/chanakya-to-krutidev.html"
+                                class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-blue-50 transition duration-300">
+                                <i class="fas fa-exchange-alt text-primary mr-3" aria-hidden="true"></i>
+                                <span>Chanakya to Krutidev</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Resources -->
+                <div class="space-y-6">
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <h2 class="text-xl font-semibold text-dark mb-4 flex items-center">
+                            <i class="fas fa-download mr-2 text-primary" aria-hidden="true"></i>
+                            Download Resources
+                        </h2>
+
+                        <div class="space-y-4">
+                            <div class="text-center p-4 bg-blue-50 rounded-lg">
+                                <h3 class="font-medium text-dark mb-2">Sample Images</h3>
+                                <a target="_blank" rel="noopener"
+                                    class="inline-block bg-primary hover:bg-secondary text-white px-4 py-2 rounded-lg font-medium transition duration-300"
+                                    href="#">
+                                    <i class="fas fa-download mr-2"></i> Download
+                                </a>
+                            </div>
+
+                            <div class="text-center p-4 bg-blue-50 rounded-lg">
+                                <h3 class="font-medium text-dark mb-2">Learn More</h3>
+                                <a target="_blank" rel="noopener"
+                                    class="inline-block bg-primary hover:bg-secondary text-white px-4 py-2 rounded-lg font-medium transition duration-300"
+                                    href="#">
+                                    <i class="fas fa-book mr-2"></i> Docs
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <h2 class="text-xl font-semibold text-dark mb-4 flex items-center">
+                            <i class="fas fa-star mr-2 text-primary" aria-hidden="true"></i>
+                            Why Choose Us?
+                        </h2>
+
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span><strong>Private:</strong> Everything runs in your browser.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span><strong>Fast:</strong> No uploads/download delays to servers.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span><strong>Simple:</strong> One-click download or ZIP creation for batches.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER (original) -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="../assets/img/logo.png" alt="egConvert Logo - Free Font Conversion Tools"
+                            class="w-10 h-10 rounded-lg mr-2">
+                        <span class="text-xl font-bold text-white">egConvert</span>
+                    </div>
+                    <p class="text-gray-300">The fastest and most reliable tool for converting between Unicode and
+                        Krutidev fonts online.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition duration-300">Home</a>
+                        </li>
+                        <li><a href="../pages/about-us.html"
+                                class="text-gray-300 hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="../pages/contact-us.html"
+                                class="text-gray-300 hover:text-white transition duration-300">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../pages/privacy-policy.html"
+                                class="text-gray-300 hover:text-white transition duration-300">Privacy Policy</a></li>
+                        <li><a href="../pages/terms-and-conditions.html"
+                                class="text-gray-300 hover:text-white transition duration-300">Terms & Conditions</a>
+                        </li>
+                        <li><a href="../pages/disclaimer.html"
+                                class="text-gray-300 hover:text-white transition duration-300">Disclaimer</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition duration-300"
+                            aria-label="Follow us on Facebook">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition duration-300"
+                            aria-label="Follow us on Twitter">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition duration-300"
+                            aria-label="Follow us on Instagram">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition duration-300"
+                            aria-label="Follow us on LinkedIn">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 egConvert. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- JSZip for zipping multiple images client-side -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"
+        integrity="sha512-H6hJY2dZlvKDV2I2wH7p3v2qgqXc9u8k+oQxVjvS7C2Bj7v4fVFxY7qYSlZj8Vq3g4xJXqV9Qf4Xy7b8Hh6KXQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // DOM elements
+        const fileInput = document.getElementById('fileInput');
+        const filesContainer = document.getElementById('filesContainer');
+        const emptyState = document.getElementById('emptyState');
+        const clearAllBtn = document.getElementById('clearAllBtn');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const downloadBtnText = document.getElementById('downloadBtnText');
+        const outputFormatSelect = document.getElementById('outputFormat');
+
+        // Store files in a Map to manage removal easily (key = unique id)
+        const filesMap = new Map();
+
+        // Utilities
+        function bytesToSize(bytes) {
+            const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
+            if (bytes === 0) return '0 B';
+            const i = Math.floor(Math.log(bytes) / Math.log(1024));
+            return parseFloat((bytes / Math.pow(1024, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // Truncate displayed filename to 5 chars while keeping extension
+        function truncatedDisplayName(fullName) {
+            const dotIndex = fullName.lastIndexOf('.');
+            const ext = (dotIndex !== -1) ? fullName.slice(dotIndex) : '';
+            const base = (dotIndex !== -1) ? fullName.slice(0, dotIndex) : fullName;
+            if (base.length <= 5) return base + ext;
+            return base.slice(0, 5) + '...' + ext;
+        }
+
+        function updateUIState() {
+            const count = filesMap.size;
+            clearAllBtn.disabled = (count === 0);
+            downloadBtn.disabled = (count === 0);
+            downloadBtnText.textContent = (count === 1) ? 'Download Image' : `Download ZIP (${count})`;
+            if (count === 0) {
+                if (!filesContainer.contains(emptyState)) {
+                    filesContainer.innerHTML = '';
+                    filesContainer.appendChild(emptyState);
+                }
+            } else {
+                if (filesContainer.contains(emptyState)) filesContainer.removeChild(emptyState);
+            }
+        }
+
+        // Create a unique id
+        function uid() {
+            return Math.random().toString(36).substr(2, 9);
+        }
+
+        // Render a file row
+        function renderFileRow(id, file, dataUrl) {
+            const row = document.createElement('div');
+            row.className = 'flex items-center justify-between p-3 border rounded-lg';
+            row.id = 'file-' + id;
+
+            const left = document.createElement('div');
+            left.className = 'flex items-center gap-4';
+
+            const img = document.createElement('img');
+            img.src = dataUrl;
+            img.alt = file.name;
+            img.className = 'preview-img';
+
+            const meta = document.createElement('div');
+            meta.className = 'min-w-0';
+
+            const name = document.createElement('div');
+            name.className = 'font-medium truncate';
+            name.textContent = truncatedDisplayName(file.name);
+            // show full name on hover via title attribute
+            name.title = file.name;
+
+            const info = document.createElement('div');
+            info.className = 'text-xs text-gray-500';
+            info.textContent = `${file.type || 'image'} • ${bytesToSize(file.size)}`;
+
+            meta.appendChild(name);
+            meta.appendChild(info);
+
+            left.appendChild(img);
+            left.appendChild(meta);
+
+            const right = document.createElement('div');
+            right.className = 'flex items-center gap-3';
+
+            const quickDlBtn = document.createElement('button');
+            quickDlBtn.className = 'text-gray-500 hover:text-primary focus:outline-none';
+            quickDlBtn.title = 'Download this file';
+            quickDlBtn.innerHTML = '<i class="fas fa-download"></i>';
+            quickDlBtn.addEventListener('click', async () => {
+                const format = outputFormatSelect.value; // "original" or MIME type
+                if (format === 'original') {
+                    downloadBlob(file, file.name);
+                } else {
+                    try {
+                        const blob = await imageFileToBlob(file, format, 0.92);
+                        const ext = mimeToExt(format);
+                        downloadBlob(blob, file.name.replace(/\.[^/.]+$/, '') + ext);
+                    } catch (err) {
+                        alert('Conversion failed: ' + err.message);
+                    }
+                }
+            });
+
+            const removeBtn = document.createElement('button');
+            removeBtn.className = 'text-gray-500 hover:text-red-600 focus:outline-none';
+            removeBtn.title = 'Remove';
+            removeBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+            removeBtn.addEventListener('click', () => {
+                filesMap.delete(id);
+                const existing = document.getElementById('file-' + id);
+                if (existing) existing.remove();
+                updateUIState();
+            });
+
+            right.appendChild(quickDlBtn);
+            right.appendChild(removeBtn);
+
+            row.appendChild(left);
+            row.appendChild(right);
+            filesContainer.appendChild(row);
+        }
+
+        // Convert image File to Blob with specified MIME type using canvas
+        function imageFileToBlob(file, mimeType = 'image/png', quality = 0.92) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.onload = () => {
+                    try {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = img.naturalWidth;
+                        canvas.height = img.naturalHeight;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0);
+                        canvas.toBlob((blob) => {
+                            if (blob) resolve(blob);
+                            else reject(new Error('Conversion failed'));
+                        }, mimeType, quality);
+                    } catch (err) {
+                        reject(err);
+                    }
+                };
+                img.onerror = () => reject(new Error('Failed to load image for conversion'));
+                img.src = URL.createObjectURL(file);
+            });
+        }
+
+        function mimeToExt(mime) {
+            if (!mime) return '';
+            if (mime === 'image/png') return '.png';
+            if (mime === 'image/jpeg') return '.jpg';
+            if (mime === 'image/webp') return '.webp';
+            return '';
+        }
+
+        // Download a blob/file using an anchor
+        function downloadBlob(blobOrFile, filename) {
+            let url;
+            if (blobOrFile instanceof Blob || blobOrFile instanceof File) {
+                url = URL.createObjectURL(blobOrFile);
+            } else {
+                url = URL.createObjectURL(new Blob([blobOrFile]));
+            }
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename || 'download';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            setTimeout(() => URL.revokeObjectURL(url), 5000);
+        }
+
+        // Handle files added (from input or drop)
+        async function handleFiles(fileList) {
+            const arr = Array.from(fileList).filter(f => f && f.type && f.type.startsWith('image'));
+            if (arr.length === 0) return;
+            if (filesContainer.contains(emptyState)) filesContainer.removeChild(emptyState);
+
+            for (const file of arr) {
+                const id = uid();
+                filesMap.set(id, file);
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    renderFileRow(id, file, e.target.result);
+                    updateUIState();
+                };
+                reader.readAsDataURL(file);
+            }
+            updateUIState();
+        }
+
+        // File input change
+        fileInput.addEventListener('change', (ev) => {
+            handleFiles(ev.target.files);
+            fileInput.value = '';
+        });
+
+        // Drag & drop support on label
+        const uploadLabel = fileInput.closest('label');
+        uploadLabel.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadLabel.classList.add('border-primary', 'bg-white');
+        });
+        uploadLabel.addEventListener('dragleave', (e) => {
+            uploadLabel.classList.remove('border-primary', 'bg-white');
+        });
+        uploadLabel.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadLabel.classList.remove('border-primary', 'bg-white');
+            const dt = e.dataTransfer;
+            if (dt && dt.files && dt.files.length) {
+                handleFiles(dt.files);
+            }
+        });
+
+        // Clear all
+        clearAllBtn.addEventListener('click', () => {
+            filesMap.clear();
+            filesContainer.innerHTML = '';
+            filesContainer.appendChild(emptyState);
+            updateUIState();
+        });
+
+        // Download button (main dynamic button)
+        downloadBtn.addEventListener('click', async () => {
+            const count = filesMap.size;
+            if (count === 0) return;
+
+            const selectedFormat = outputFormatSelect.value; // "original" or MIME type
+            if (count === 1) {
+                const file = Array.from(filesMap.values())[0];
+                if (selectedFormat === 'original') {
+                    downloadBlob(file, file.name);
+                } else {
+                    try {
+                        const blob = await imageFileToBlob(file, selectedFormat, 0.92);
+                        const ext = mimeToExt(selectedFormat) || '';
+                        downloadBlob(blob, file.name.replace(/\.[^/.]+$/, '') + ext);
+                    } catch (err) {
+                        alert('Conversion failed: ' + err.message);
+                    }
+                }
+            } else {
+                // multiple files -> zip
+                const zip = new JSZip();
+                const folder = zip.folder('images') || zip;
+                for (const file of filesMap.values()) {
+                    if (selectedFormat === 'original') {
+                        const buf = await file.arrayBuffer();
+                        folder.file(file.name, buf);
+                    } else {
+                        try {
+                            const blob = await imageFileToBlob(file, selectedFormat, 0.92);
+                            const buf = await blob.arrayBuffer();
+                            const ext = mimeToExt(selectedFormat) || '';
+                            const filename = file.name.replace(/\.[^/.]+$/, '') + ext;
+                            folder.file(filename, buf);
+                        } catch (err) {
+                            // fallback to original if conversion fails
+                            const buf = await file.arrayBuffer();
+                            folder.file(file.name, buf);
+                        }
+                    }
+                }
+
+                try {
+                    const content = await zip.generateAsync({ type: 'blob' });
+                    const zipName = 'egconvert-images-' + (new Date()).toISOString().slice(0, 19).replace(/[:T]/g, '-') + '.zip';
+                    downloadBlob(content, zipName);
+                } catch (err) {
+                    alert('Failed to create ZIP: ' + err.message);
+                }
+            }
+        });
+
+        // Quick keyboard accessibility: pressing Enter on label opens file dialog
+        uploadLabel.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                fileInput.click();
+            }
+        });
+
+        // Initial UI state
+        updateUIState();
+
+        // Mobile menu toggle (kept from original)
+        document.getElementById('menu-toggle').addEventListener('click', function () {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Mobile converter menu toggle (original)
+        document.getElementById('converter-toggle').addEventListener('click', function () {
+            document.getElementById('converter-menu').classList.toggle('hidden');
+        });
+
+        // Mobile file converter toggle
+        const fileConvToggle = document.getElementById('fileconv-toggle');
+        if (fileConvToggle) {
+            fileConvToggle.addEventListener('click', function () {
+                document.getElementById('fileconv-menu').classList.toggle('hidden');
+            });
+        }
+    </script>
+</body>
+
+</html>
