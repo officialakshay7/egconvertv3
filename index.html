@@ -260,6 +260,22 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- File Converter menu -->
+                    <div class="relative group">
+                        <button class="text-gray-600 hover:text-primary font-medium flex items-center"
+                            aria-expanded="false" aria-haspopup="true">
+                            File Converter
+                            <i class="fas fa-chevron-down ml-1 text-sm"></i>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-xl rounded-lg p-4 w-64 z-50">
+                            <div class="grid grid-cols-1 gap-2">
+                                <a href="#" class="px-4 py-2 hover:bg-blue-50 rounded-md">Image Converter</a>
+                                <a href="#" class="px-4 py-2 hover:bg-blue-50 rounded-md">Image Compressor</a>
+                                <a href="#" class="px-4 py-2 hover:bg-blue-50 rounded-md">Image Resizer</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -283,6 +299,20 @@
                         <a href="fonts/chanakya-to-unicode.html" class="block py-2 text-sm">Chanakya to Unicode</a>
                         <a href="fonts/krutidev-to-chanakya.html" class="block py-2 text-sm">Krutidev to Chanakya</a>
                         <a href="fonts/chanakya-to-krutidev.html" class="block py-2 text-sm">Chanakya to Krutidev</a>
+                    </div>
+
+                    <div class="py-2">
+                        <button id="fileconv-toggle"
+                            class="flex items-center justify-between w-full text-gray-600 font-medium"
+                            aria-expanded="false">
+                            <span>File Converter</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="fileconv-menu" class="hidden pl-4 mt-2">
+                            <a href="#" class="block py-2 text-sm">Image Converter</a>
+                            <a href="#" class="block py-2 text-sm">Image Compressor</a>
+                            <a href="#" class="block py-2 text-sm">Image Resizer</a>
+                        </div>
                     </div>
                 </div>
             </div>
