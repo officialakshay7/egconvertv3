@@ -372,6 +372,17 @@
         document.getElementById('converter-toggle').addEventListener('click', function () {
             document.getElementById('converter-menu').classList.toggle('hidden');
         });
+
+
+        // File Converter mobile menu toggle (fix)
+        document.getElementById('fileconv-toggle').addEventListener('click', function () {
+            const menu = document.getElementById('fileconv-menu');
+            const expanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', String(!expanded));
+            menu.classList.toggle('hidden');
+            // Optional: rotate chevron if you add a CSS class for it
+            // this.querySelector('i')?.classList.toggle('rotate-180');
+        });
     </script>
 </body>
 
