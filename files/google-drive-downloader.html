@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Google Drive Downloader - egConvert</title>
+
+  <!-- SEO meta -->
+  <meta name="title" content="Google Drive Downloader - egConvert">
+  <meta name="description" content="Download public Google Drive files by pasting a shareable link or file ID. Works client-side with robust fallbacks for large files and CORS.">
+  <meta name="keywords" content="google drive downloader,download google drive file,drive downloader,file id downloader,download shared drive file">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://egconvert.com/google-drive-downloader">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Google Drive Downloader — egConvert">
+  <meta property="og:description" content="Download public Google Drive files by pasteing a share link or file id. Client-side with fallbacks.">
+  <meta property="og:url" content="https://egconvert.com/google-drive-downloader">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://egconvert.com/assets/img/drive-download.png">
+
+  <!-- Tailwind & fonts (same as your site) -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3B82F6',
+            secondary: '#2563EB',
+            accent: '#1D4ED8',
+            dark: '#1E293B'
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+    *{font-family:"Lexend",sans-serif}
+    @keyframes fadeIn{from{opacity:0} to{opacity:1}}
+    .animate-fadeIn{animation:fadeIn .45s ease-in-out}
+    button:focus,a:focus,textarea:focus{outline:2px solid #3B82F6;outline-offset:2px}
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+  <!-- NAVBAR (original) -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-3">
+
+                <div class="flex items-center space-x-2">
+                    <a href="index.html">
+                        <img src="../assets/img/logo.png" alt="egConvert Logo" class="w-10 h-10 rounded-lg">
+                    </a>
+                    <a href="index.html" class="text-xl font-bold text-primary">egConvert</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-500 hover:text-primary focus:outline-none"
+                        aria-label="Toggle navigation menu">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+
+                <!-- Desktop menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-primary font-medium">Home</a>
+
+                    <div class="relative group">
+                        <button class="text-gray-600 hover:text-primary font-medium flex items-center"
+                            aria-expanded="false" aria-haspopup="true">
+                            Font Converter
+                            <i class="fas fa-chevron-down ml-1 text-sm"></i>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-xl rounded-lg p-4 w-64 z-50">
+                            <div class="grid grid-cols-1 gap-2">
+                                <a href="index.html" class="px-4 py-2 hover:bg-blue-50 rounded-md">Unicode to
+                                    Krutidev</a>
+                                <a href="../fonts/krutidev-to-unicode.html"
+                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Krutidev to Unicode</a>
+                                <div class="border-t my-1"></div>
+                                <a href="../fonts/mangal-to-krutidev.html"
+                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Mangal
+                                    to Krutidev</a>
+                                <a href="../fonts/krutidev-to-mangal.html"
+                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Krutidev
+                                    to Mangal</a>
+                                <div class="border-t my-1"></div>
+                                <a href="../fonts/unicode-to-chanakya.html"
+                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Unicode
+                                    to Chanakya</a>
+                                <a href="../fonts/chanakya-to-unicode.html"
+                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Chanakya to Unicode</a>
+                                <div class="border-t my-1"></div>
+                                <a href="../fonts/krutidev-to-chanakya.html"
+                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Krutidev to Chanakya</a>
+                                <a href="../fonts/chanakya-to-krutidev.html"
+                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Chanakya to Krutidev</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- File Converter menu -->
+                    <div class="relative group">
+                        <button class="text-gray-600 hover:text-primary font-medium flex items-center"
+                            aria-expanded="false" aria-haspopup="true">
+                            File Converter
+                            <i class="fas fa-chevron-down ml-1 text-sm"></i>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-xl rounded-lg p-4 w-64 z-50">
+                            <div class="grid grid-cols-1 gap-2">
+                                <a href="../files/image-converter.html" class="px-4 py-2 hover:bg-blue-50 rounded-md">Image Converter</a>
+                                <a href="../files/youtube-thumbnail-downloader.html" class="px-4 py-2 hover:bg-blue-50 rounded-md">Youtube Thumbnail Downloader</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile menu (hidden by default) -->
+            <div id="mobile-menu" class="hidden md:hidden py-4 border-t">
+                <a href="index.html" class="block py-2 text-primary font-medium">Home</a>
+
+                <div class="py-2">
+                    <button id="converter-toggle"
+                        class="flex items-center justify-between w-full text-gray-600 font-medium"
+                        aria-expanded="false">
+                        <span>Font Converter</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="converter-menu" class="hidden pl-4 mt-2">
+                        <a href="index.html" class="block py-2 text-sm">Unicode to Krutidev</a>
+                        <a href="../fonts/krutidev-to-unicode.html" class="block py-2 text-sm">Krutidev to Unicode</a>
+                        <a href="../fonts/mangal-to-krutidev.html" class="block py-2 text-sm">Mangal to Krutidev</a>
+                        <a href="../fonts/krutidev-to-mangal.html" class="block py-2 text-sm">Krutidev to Mangal</a>
+                        <a href="../fonts/unicode-to-chanakya.html" class="block py-2 text-sm">Unicode to Chanakya</a>
+                        <a href="../fonts/chanakya-to-unicode.html" class="block py-2 text-sm">Chanakya to Unicode</a>
+                        <a href="../fonts/krutidev-to-chanakya.html" class="block py-2 text-sm">Krutidev to Chanakya</a>
+                        <a href="../fonts/chanakya-to-krutidev.html" class="block py-2 text-sm">Chanakya to Krutidev</a>
+                    </div>
+
+                    <div class="py-2">
+                        <button id="fileconv-toggle"
+                            class="flex items-center justify-between w-full text-gray-600 font-medium"
+                            aria-expanded="false">
+                            <span>File Converter</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="fileconv-menu" class="hidden pl-4 mt-2">
+                            <a href="../files/image-converter.html" class="block py-2 text-sm">Image Converter</a>
+                            <a href="../files/youtube-thumbnail-downloader.html" class="block py-2 text-sm">Youtube Thumbnail Downloader</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+  <!-- Main -->
+  <main class="container mx-auto px-4 py-8">
+    <header class="text-center mb-12 animate-fadeIn">
+      <h1 class="text-3xl md:text-4xl font-bold text-dark mb-4">Google Drive Downloader — Download by Link or ID</h1>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">Paste a public Google Drive share link or a file ID to download files quickly. Works client-side with reliable fallbacks for large files and CORS limitations.</p>
+    </header>
+
+    <!-- Tool Section -->
+    <section class="mb-12 animate-fadeIn">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Input & Controls -->
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h2 class="text-xl font-semibold mb-4 flex items-center"><i class="fas fa-cloud-download-alt mr-2 text-primary"></i> Paste Drive Link or File ID</h2>
+
+          <input id="driveInput" type="text" placeholder="https://drive.google.com/file/d/FILE_ID/view?usp=sharing or FILE_ID" class="w-full p-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" aria-label="Google Drive link or file id" />
+
+          <div class="flex flex-wrap gap-3 mt-4">
+            <button id="fetchBtn" class="bg-primary hover:bg-secondary text-white px-5 py-2.5 rounded-lg font-medium flex items-center"><i class="fas fa-download mr-2"></i> Get File</button>
+            <button id="openBtn" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-5 py-2.5 rounded-lg font-medium flex items-center"><i class="fas fa-external-link-alt mr-2"></i> Open in Drive</button>
+            <button id="clearBtn" class="bg-gray-50 border text-gray-700 px-5 py-2.5 rounded-lg font-medium flex items-center"><i class="fas fa-eraser mr-2"></i> Clear</button>
+          </div>
+
+          <div id="helpBox" class="hidden mt-4 text-sm text-gray-600">
+            Paste a Google Drive share link (ensure file is set to "Anyone with the link can view") or paste the raw file ID. Click <strong>Get File</strong> to try a direct download. If automatic download is blocked, click <strong>Open in Drive</strong> to download from Google Drive UI.
+          </div>
+
+          <div id="error" class="hidden mt-4 text-sm text-red-600" role="alert"></div>
+
+          <div id="progressWrap" class="hidden mt-4">
+            <div class="text-sm text-gray-600">Downloading...</div>
+            <div class="w-full bg-gray-100 rounded-full h-2 mt-2 overflow-hidden">
+              <div id="progressBar" class="h-2 w-0 bg-red-500"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results & file info -->
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h2 class="text-xl font-semibold mb-4 flex items-center"><i class="fas fa-file-alt mr-2 text-primary"></i> File Preview & Options</h2>
+
+          <div id="fileInfo" class="hidden space-y-3">
+            <div class="text-sm text-gray-700"><strong>File ID:</strong> <span id="fileIdText"></span></div>
+            <div class="text-sm text-gray-700"><strong>File name:</strong> <span id="fileNameText">—</span></div>
+            <div class="text-sm text-gray-700"><strong>MIME type:</strong> <span id="fileMimeText">—</span></div>
+
+            <div class="flex gap-3">
+              <button id="downloadBtn" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md">Download</button>
+              <a id="directLink" class="inline-block text-sm text-red-600 self-center" target="_blank" rel="noopener">Open Direct</a>
+            </div>
+
+            <div id="filePreview" class="mt-3 text-sm text-gray-600"></div>
+          </div>
+
+          <div id="noFile" class="text-sm text-gray-500">Paste a share link or file ID and click <strong>Get File</strong> to fetch it.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEO content: how to, permissions, troubleshooting -->
+    <section class="mb-12">
+      <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+        <h2 class="text-2xl font-semibold mb-4">How to get a Google Drive share link</h2>
+        <ol class="list-decimal list-inside text-gray-700 space-y-2">
+          <li>Right-click the file in Google Drive and click <strong>Share</strong>.</li>
+          <li>Under <strong>Get link</strong> set <em>Anyone with the link</em> and the access to <em>Viewer</em> (or higher if needed).</li>
+          <li>Copy the shareable link and paste it into the input above.</li>
+        </ol>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+        <h2 class="text-2xl font-semibold mb-4">How the downloader works (technical)</h2>
+        <p class="text-gray-700 mb-3">
+          The tool extracts the Drive file ID and tries a direct download URL:
+        </p>
+        <pre class="bg-gray-100 p-3 rounded text-sm text-gray-700 overflow-auto"><code>https://drive.google.com/uc?export=download&id=FILE_ID</code></pre>
+        <p class="text-gray-700 mt-3">For small public files this often triggers a direct file response. For large files Google sometimes returns an intermediate confirmation page (to warn about virus scanning) or the browser blocks programmatic downloads for cross-origin reasons. In those cases the tool will open the Drive page so you can download manually.</p>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-md p-6">
+        <h2 class="text-2xl font-semibold mb-4">Permissions & privacy</h2>
+        <p class="text-gray-700">This tool operates in your browser only and does not upload files to any server. Files must be publicly shared or accessible to the link for the downloader to work. Never paste links to private files unless you knowingly want to share them.</p>
+      </div>
+    </section>
+
+    <!-- FAQ and troubleshooting -->
+    <section class="mb-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-2 bg-white rounded-xl shadow-md p-6">
+        <h2 class="text-2xl font-semibold mb-4">FAQ & Troubleshooting</h2>
+
+        <div class="space-y-6 text-gray-700">
+          <div>
+            <h3 class="text-lg font-medium">Why did the download fail?</h3>
+            <p class="mt-2">Common causes: file not shared publicly, browser CORS restrictions, adblocker/extensions blocking requests, or Google requires a confirmation for large files. The tool automatically falls back to opening the Drive page — use that to download manually.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-medium">How do I make a file downloadable?</h3>
+            <p class="mt-2">Open the file in Drive → Share → Change to <em>Anyone with the link</em> → Copy link. Then paste it here.</p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-medium">Is the tool secure?</h3>
+            <p class="mt-2">Yes — everything runs in your browser. No file contents leave your device via this site.</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="space-y-6">
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="font-semibold">Quick Tips</h3>
+          <ul class="mt-3 text-sm text-gray-700 list-disc list-inside space-y-2">
+            <li>Ensure "Anyone with the link" permissions for public files.</li>
+            <li>Disable ad-blockers or test in incognito if downloads fail.</li>
+            <li>For very large files, open in Drive UI and use the Download button.</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="font-semibold">Related Tools</h3>
+          <ul class="mt-3 text-sm text-gray-700 list-disc list-inside space-y-2">
+            <li><a class="text-primary" href="/files/image-converter.html">Image Converter</a></li>
+            <li><a class="text-primary" href="/google-drive-inspector.html">Drive Inspector (coming)</a></li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+   <!-- FOOTER (original) -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="../assets/img/logo.png" alt="egConvert Logo - Free Font Conversion Tools"
+                            class="w-10 h-10 rounded-lg mr-2">
+                        <span class="text-xl font-bold text-white">egConvert</span>
+                    </div>
+                    <p class="text-gray-300">The fastest and most reliable tool for converting between Unicode and
+                        Krutidev fonts online.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition duration-300">Home</a>
+                        </li>
+                        <li><a href="../pages/about-us.html"
+                                class="text-gray-300 hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="../pages/contact-us.html"
+                                class="text-gray-300 hover:text-white transition duration-300">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../pages/privacy-policy.html"
+                                class="text-gray-300 hover:text-white transition duration-300">Privacy Policy</a></li>
+                        <li><a href="../pages/terms-and-conditions.html"
+                                class="text-gray-300 hover:text-white transition duration-300">Terms & Conditions</a>
+                        </li>
+                        <li><a href="../pages/disclaimer.html"
+                                class="text-gray-300 hover:text-white transition duration-300">Disclaimer</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/" target="_blank" class="text-gray-300 hover:text-white transition duration-300"
+    aria-label="Follow us on Facebook">
+    <i class="fab fa-facebook-f text-xl"></i>
+</a>
+<a href="https://x.com/" target="_blank" class="text-gray-300 hover:text-white transition duration-300"
+    aria-label="Follow us on Twitter">
+    <i class="fab fa-twitter text-xl"></i>
+</a>
+<a href="https://www.instagram.com/" target="_blank" class="text-gray-300 hover:text-white transition duration-300"
+    aria-label="Follow us on Instagram">
+    <i class="fab fa-instagram text-xl"></i>
+</a>
+<a href="https://www.linkedin.com/" target="_blank" class="text-gray-300 hover:text-white transition duration-300"
+    aria-label="Follow us on LinkedIn">
+    <i class="fab fa-linkedin-in text-xl"></i>
+</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 egConvert. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+  <!-- Scripts -->
+  <script>
+    // Basic UI toggles
+    document.getElementById('menu-toggle').addEventListener('click', ()=> document.getElementById('mobile-menu').classList.toggle('hidden'));
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('openBtn').addEventListener('click', function(){ // open input link in drive
+      const val = document.getElementById('driveInput').value.trim();
+      if(!val) return alert('Paste a Google Drive link or file ID first.');
+      const id = extractDriveId(val);
+      if(!id){ alert('Could not extract file ID. Paste a full Drive link or the file ID.'); return; }
+      window.open('https://drive.google.com/file/d/' + id + '/view', '_blank');
+    });
+
+    // extract Drive file ID from common patterns
+    function extractDriveId(input){
+      if(!input) return null;
+      input = input.trim();
+      // Direct just-ID pattern
+      const maybeId = input.match(/^[a-zA-Z0-9_-]{10,}$/);
+      if(maybeId) return maybeId[0];
+      // patterns
+      const patterns = [
+        /\/file\/d\/([a-zA-Z0-9_-]{10,})/, // /file/d/ID
+        /id=([a-zA-Z0-9_-]{10,})/, // id=ID
+        /open\?id=([a-zA-Z0-9_-]{10,})/, // open?id=ID
+        /\/drive\/folders\/([a-zA-Z0-9_-]{10,})/ // folder id (not file)
+      ];
+      for(const r of patterns){ const m = input.match(r); if(m && m[1]) return m[1]; }
+      // last resort: look for 25-33 char token
+      const any = input.match(/([a-zA-Z0-9_-]{10,})/);
+      return any ? any[1] : null;
+    }
+
+    // elements
+    const driveInput = document.getElementById('driveInput');
+    const fetchBtn = document.getElementById('fetchBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const fileInfo = document.getElementById('fileInfo');
+    const fileIdText = document.getElementById('fileIdText');
+    const fileNameText = document.getElementById('fileNameText');
+    const fileMimeText = document.getElementById('fileMimeText');
+    const filePreview = document.getElementById('filePreview');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const directLink = document.getElementById('directLink');
+    const errorBox = document.getElementById('error');
+    const progressWrap = document.getElementById('progressWrap');
+    const progressBar = document.getElementById('progressBar');
+    const noFile = document.getElementById('noFile');
+
+    function showError(msg){
+      if(!msg){ errorBox.classList.add('hidden'); errorBox.textContent=''; return; }
+      errorBox.classList.remove('hidden'); errorBox.textContent = msg;
+    }
+
+    // Build a direct download URL for public files
+    function buildDirectUrl(id){
+      return `https://drive.google.com/uc?export=download&id=${encodeURIComponent(id)}`;
+    }
+
+    // Attempt to fetch small metadata via a CORS-friendly endpoint. Note: Google doesn't provide CORS-friendly metadata for public files
+    // So we rely on best-effort: show ID and direct link and let user download via fallback if necessary.
+    fetchBtn.addEventListener('click', function(){
+      showError('');
+      filePreview.innerHTML = '';
+      fileInfo.classList.add('hidden');
+      noFile.classList.add('hidden');
+
+      const val = driveInput.value.trim();
+      const id = extractDriveId(val);
+      if(!id){ showError('Could not extract a valid Drive file ID. Paste the share link or the file ID.'); return; }
+
+      fileIdText.textContent = id;
+      fileNameText.textContent = '—';
+      fileMimeText.textContent = '—';
+      directLink.href = buildDirectUrl(id);
+      directLink.textContent = 'Open Direct Link';
+
+      // Show file info area (minimal)
+      fileInfo.classList.remove('hidden');
+
+      // Try to programmatically fetch small response header to detect availability.
+      // NOTE: Google Drive blocks many cross-origin requests - we mostly rely on fallback.
+      (async ()=>{
+        try{
+          // Try HEAD request to check availability (HEAD may be blocked — we use fetch with method GET but only attempt minimal)
+          const url = buildDirectUrl(id) + '&confirm=1';
+          // attempt fetch to see if the resource is directly available
+          const controller = new AbortController();
+          const timeout = setTimeout(()=> controller.abort(), 12000);
+          const res = await fetch(buildDirectUrl(id), { signal: controller.signal, mode:'cors' });
+          clearTimeout(timeout);
+          console.log('drive fetch response', res);
+
+          // If not OK or opaque, let user open directly. If ok and content-type present, set basic info.
+          if(!res.ok){
+            showError('Server returned HTTP ' + res.status + '. Falling back to Drive UI. Click Open in Drive.');
+            // we still show direct link
+            return;
+          }
+
+          // If response is opaque or blocked we cannot read headers; try blob fallback
+          if(res.type === 'opaque' || !res.headers){
+            showError('Browser prevented reading file metadata (opaque response). Use the Open button to download from Drive UI.');
+            return;
+          }
+
+          // Try read some headers if available (may not be present due to CORS)
+          const ct = res.headers.get('content-type');
+          const cd = res.headers.get('content-disposition');
+          if(cd){
+            // attempt to extract filename from content-disposition
+            const m = cd.match(/filename\*=UTF-8''(.+)|filename="?([^"]+)"?/);
+            if(m){
+              const fname = decodeURIComponent(m[1] || m[2]);
+              fileNameText.textContent = fname;
+            }
+          }
+          if(ct) fileMimeText.textContent = ct;
+
+          // If response is a direct file (small), we can attempt to download
+          // We decide not to auto-download the response here; instead we enable Download button which will call attemptDownload
+          showError('');
+        }catch(err){
+          console.warn('Drive metadata fetch failed', err);
+          showError('Could not fetch file metadata (CORS or network). Use the Open button or Download (fallback will open Drive page if needed).');
+        }
+      })();
+    });
+
+    // Clear
+    clearBtn.addEventListener('click', function(){
+      driveInput.value = '';
+      fileInfo.classList.add('hidden');
+      noFile.classList.remove('hidden');
+      showError('');
+      progressWrap.classList.add('hidden');
+      progressBar.style.width = '0%';
+      filePreview.innerHTML = '';
+    });
+
+    // Download action
+    downloadBtn.addEventListener('click', async function(){
+      showError('');
+      const id = fileIdText.textContent;
+      if(!id){ showError('No file selected. Paste link or ID and click Get File.'); return; }
+      const url = buildDirectUrl(id);
+      await attemptDriveDownload(url, id);
+    });
+
+    // attemptDriveDownload: tries to fetch file and download; falls back to opening Drive page
+    async function attemptDriveDownload(url, fileId){
+      try{
+        progressWrap.classList.remove('hidden'); progressBar.style.width = '0%';
+        showError('Attempting download...');
+
+        // We try a fetch first. Many times this will fail due to CORS; handle gracefully.
+        const controller = new AbortController();
+        const timeout = setTimeout(()=> controller.abort(), 20000);
+
+        let res;
+        try{
+          // Try GET — some public files respond with file bytes
+          res = await fetch(url, { signal: controller.signal, mode: 'cors' });
+        }catch(fetchErr){
+          clearTimeout(timeout);
+          console.warn('Drive fetch failed', fetchErr);
+          // Fallback: open the file view page in Drive (reliable if file is shareable)
+          openDriveFallback(fileId, 'Fetch failed (CORS or network).');
+          return;
+        }
+        clearTimeout(timeout);
+
+        // If response not ok, fallback
+        if(!res.ok){
+          console.warn('Drive response not ok', res.status);
+          // Google often returns a HTML page with confirmation — open Drive UI
+          openDriveFallback(fileId, `Server returned HTTP ${res.status}`);
+          return;
+        }
+
+        // If body is not readable (opaque), fallback
+        if(!res.body || res.type === 'opaque'){
+          console.warn('Drive response opaque or no body', res);
+          openDriveFallback(fileId, 'Opaque response or no body — browser blocked cross-origin read');
+          return;
+        }
+
+        // If we can read the stream, stream to user with progress
+        const contentLength = res.headers.get('content-length');
+        const total = contentLength ? parseInt(contentLength, 10) : null;
+        const reader = res.body.getReader();
+        const chunks = []; let received = 0;
+        while(true){
+          const { done, value } = await reader.read();
+          if(done) break;
+          chunks.push(value);
+          received += (value && (value.length || value.byteLength)) || 0;
+          if(total) progressBar.style.width = Math.round((received/total)*100) + '%';
+          else {
+            const curr = parseInt(progressBar.style.width || '0');
+            progressBar.style.width = Math.min(95, curr + 8) + '%';
+          }
+        }
+
+        // Blob and download
+        const contentType = res.headers.get('content-type') || 'application/octet-stream';
+        const blob = new Blob(chunks, { type: contentType });
+        // Try extract filename from headers
+        let filename = fileId + '.download';
+        const cd = res.headers.get('content-disposition');
+        if(cd){
+          const m = cd.match(/filename\*=UTF-8''(.+)|filename="?([^"]+)"?/);
+          if(m) filename = decodeURIComponent(m[1] || m[2]);
+        }
+        triggerDownload(blob, filename);
+        progressBar.style.width = '100%';
+        setTimeout(()=> progressWrap.classList.add('hidden'), 800);
+        showError('');
+      }catch(err){
+        console.error('attemptDriveDownload error', err);
+        openDriveFallback(fileId, err && (err.message || String(err)));
+      }
+    }
+
+    // Fallback: open Drive file view URL so user can use Drive's download
+    function openDriveFallback(fileId, reason){
+      progressWrap.classList.add('hidden');
+      showError('Automatic download unavailable: ' + (reason || 'unknown') + ' — opening Google Drive page as fallback.');
+      try{
+        window.open('https://drive.google.com/file/d/' + fileId + '/view', '_blank');
+      }catch(e){
+        console.error('Fallback open failed', e);
+        showError('Could not open fallback link. Copy the direct link and open it manually: ' + buildDirectUrl(fileId));
+      }
+    }
+
+    // triggerDownload (same pattern)
+    function triggerDownload(blob, filename){
+      try{
+        const a = document.createElement('a');
+        const objectUrl = URL.createObjectURL(blob);
+        a.href = objectUrl;
+        a.download = filename || 'download.bin';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(()=> URL.revokeObjectURL(objectUrl), 1500);
+      }catch(e){
+        console.error('triggerDownload failed', e);
+        try{ window.open(URL.createObjectURL(blob), '_blank'); }catch(e2){ console.error('open objecturl failed', e2); }
+        showError('Automatic download failed — opened blob in a new tab. Use Save As... to save the file.');
+      }
+    }
+  </script>
+
+  <!-- FAQ structured data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"How do I download a Google Drive file using this tool?","acceptedAnswer":{"@type":"Answer","text":"Paste a public Google Drive share link or raw file ID and click Get File. Click Download to attempt a direct download. If automatic download is blocked, the tool will open the Google Drive page where you can download using Drive's UI."}},
+      {"@type":"Question","name":"Why can't this tool download some files automatically?","acceptedAnswer":{"@type":"Answer","text":"Google may require a confirmation page for large files or block cross-origin programmatic downloads (CORS). In those cases we open the Drive page so you can download manually."}},
+      {"@type":"Question","name":"Is it safe to paste Drive links here?","acceptedAnswer":{"@type":"Answer","text":"All operations run in your browser; the site does not upload file contents to any server. Only paste links to files you intend to download and that you have permission to access."}}
+    ]
+  }
+  </script>
+</body>
+</html>
