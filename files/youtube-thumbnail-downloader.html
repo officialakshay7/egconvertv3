@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube Thumbnail Downloader - egConvert</title>
+
+    <!-- Primary SEO Meta Tags -->
+    <meta name="title" content="YouTube Thumbnail Downloader - egConvert">
+    <meta name="description" content="Preview and download YouTube video thumbnails (maxresdefault, hqdefault, sddefault). Fast, client-side thumbnail downloader — no server required. Learn best practices and how to use thumbnails legally." />
+    <meta name="keywords" content="youtube thumbnail downloader,youtube thumbnail download,maxresdefault,hqdefault,download youtube thumbnail,preview youtube thumbnail,thumbnail extractor,youtube image downloader" />
+    <meta name="author" content="egConvert">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="googlebot" content="index, follow">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://egconvert.com/youtube-thumbnail-downloader">
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:title" content="YouTube Thumbnail Downloader - egConvert">
+    <meta property="og:description" content="Preview & download YouTube thumbnails in MaxRes and HD. Client-side, free, and fast." />
+    <meta property="og:url" content="https://egconvert.com/youtube-thumbnail-downloader">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://egconvert.com/assets/img/youtube-thumbnail-example.png">
+    <meta property="og:site_name" content="egConvert">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="YouTube Thumbnail Downloader - egConvert">
+    <meta name="twitter:description" content="Preview & download YouTube thumbnails in MaxRes and HD. Client-side, free, and fast.">
+    <meta name="twitter:image" content="https://egconvert.com/assets/img/youtube-thumbnail-example.png">
+
+    <!-- Structured Data: WebApplication -->
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"WebApplication",
+      "name":"YouTube Thumbnail Downloader",
+      "url":"https://egconvert.com/youtube-thumbnail-downloader",
+      "description":"Preview and download thumbnails from YouTube videos in max resolution and multiple sizes. Client-side tool by egConvert.",
+      "applicationCategory":"UtilityApplication",
+      "operatingSystem":"Any",
+      "author":{"@type":"Organization","name":"egConvert"}
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/img/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/img/logo.png">
+    <link rel="preload" href="assets/img/logo.png" as="image">
+
+    <!-- Performance preconnects -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#2563EB',
+                        accent: '#1D4ED8',
+                        light: '#F8FAFC',
+                        dark: '#1E293B'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Fonts & small overrides -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+        * { font-family: "Lexend", sans-serif; font-optical-sizing: auto; font-style: normal; }
+        @keyframes fadeIn { from{opacity:0} to{opacity:1} } .animate-fadeIn { animation: fadeIn .45s ease-in-out; }
+        textarea::-webkit-scrollbar { width:8px } textarea::-webkit-scrollbar-thumb { background:#c5c5c5;border-radius:10px }
+        button:focus, a:focus, textarea:focus { outline:2px solid #3B82F6; outline-offset:2px }
+        code { background:#f3f4f6; padding:2px 6px; border-radius:4px; font-size:0.95em; }
+    </style>
+
+    <!-- Long description meta (useful snippet) -->
+    <meta name="long-description" content="Download YouTube thumbnails (maxresdefault, hqdefault) quickly. Use thumbnails for blog posts, social previews, or for design mockups—follow copyright rules.">
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+     <!-- NAVBAR (original) -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-3">
+
+                <div class="flex items-center space-x-2">
+                    <a href="index.html">
+                        <img src="../assets/img/logo.png" alt="egConvert Logo" class="w-10 h-10 rounded-lg">
+                    </a>
+                    <a href="index.html" class="text-xl font-bold text-primary">egConvert</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-500 hover:text-primary focus:outline-none"
+                        aria-label="Toggle navigation menu">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+
+                <!-- Desktop menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-primary font-medium">Home</a>
+
+                    <div class="relative group">
+                        <button class="text-gray-600 hover:text-primary font-medium flex items-center"
+                            aria-expanded="false" aria-haspopup="true">
+                            Font Converter
+                            <i class="fas fa-chevron-down ml-1 text-sm"></i>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-xl rounded-lg p-4 w-64 z-50">
+                            <div class="grid grid-cols-1 gap-2">
+                                <a href="index.html" class="px-4 py-2 hover:bg-blue-50 rounded-md">Unicode to
+                                    Krutidev</a>
+                                <a href="../fonts/krutidev-to-unicode.html"
+                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Krutidev to Unicode</a>
+                                <div class="border-t my-1"></div>
+                                <a href="../fonts/mangal-to-krutidev.html"
+                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Mangal
+                                    to Krutidev</a>
+                                <a href="../fonts/krutidev-to-mangal.html"
+                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Krutidev
+                                    to Mangal</a>
+                                <div class="border-t my-1"></div>
+                                <a href="../fonts/unicode-to-chanakya.html"
+                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Unicode
+                                    to Chanakya</a>
+                                <a href="../fonts/chanakya-to-unicode.html"
+                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Chanakya to Unicode</a>
+                                <div class="border-t my-1"></div>
+                                <a href="../fonts/krutidev-to-chanakya.html"
+                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Krutidev to Chanakya</a>
+                                <a href="../fonts/chanakya-to-krutidev.html"
+                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Chanakya to Krutidev</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- File Converter menu -->
+                    <div class="relative group">
+                        <button class="text-gray-600 hover:text-primary font-medium flex items-center"
+                            aria-expanded="false" aria-haspopup="true">
+                            File Converter
+                            <i class="fas fa-chevron-down ml-1 text-sm"></i>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-xl rounded-lg p-4 w-64 z-50">
+                            <div class="grid grid-cols-1 gap-2">
+                                <a href="../files/image-converter.html" class="px-4 py-2 hover:bg-blue-50 rounded-md">Image Converter</a>
+                                <a href="#" class="px-4 py-2 hover:bg-blue-50 rounded-md">Image Compressor</a>
+                                <a href="#" class="px-4 py-2 hover:bg-blue-50 rounded-md">Image Resizer</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile menu (hidden by default) -->
+            <div id="mobile-menu" class="hidden md:hidden py-4 border-t">
+                <a href="index.html" class="block py-2 text-primary font-medium">Home</a>
+
+                <div class="py-2">
+                    <button id="converter-toggle"
+                        class="flex items-center justify-between w-full text-gray-600 font-medium"
+                        aria-expanded="false">
+                        <span>Font Converter</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="converter-menu" class="hidden pl-4 mt-2">
+                        <a href="index.html" class="block py-2 text-sm">Unicode to Krutidev</a>
+                        <a href="../fonts/krutidev-to-unicode.html" class="block py-2 text-sm">Krutidev to Unicode</a>
+                        <a href="../fonts/mangal-to-krutidev.html" class="block py-2 text-sm">Mangal to Krutidev</a>
+                        <a href="../fonts/krutidev-to-mangal.html" class="block py-2 text-sm">Krutidev to Mangal</a>
+                        <a href="../fonts/unicode-to-chanakya.html" class="block py-2 text-sm">Unicode to Chanakya</a>
+                        <a href="../fonts/chanakya-to-unicode.html" class="block py-2 text-sm">Chanakya to Unicode</a>
+                        <a href="../fonts/krutidev-to-chanakya.html" class="block py-2 text-sm">Krutidev to Chanakya</a>
+                        <a href="../fonts/chanakya-to-krutidev.html" class="block py-2 text-sm">Chanakya to Krutidev</a>
+                    </div>
+
+                    <div class="py-2">
+                        <button id="fileconv-toggle"
+                            class="flex items-center justify-between w-full text-gray-600 font-medium"
+                            aria-expanded="false">
+                            <span>File Converter</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div id="fileconv-menu" class="hidden pl-4 mt-2">
+                            <a href="../files/image-converter.html" class="block py-2 text-sm">Image Converter</a>
+                            <a href="#" class="block py-2 text-sm">Image Compressor</a>
+                            <a href="#" class="block py-2 text-sm">Image Resizer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="text-center mb-12 animate-fadeIn">
+            <h1 class="text-3xl md:text-4xl font-bold text-dark mb-4">YouTube Thumbnail Downloader</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Easily preview and download thumbnails for any public YouTube video. Get the highest available resolution (<code>maxresdefault.jpg</code>) or fall back to HD/SD sizes — all client-side, privacy-friendly, and free.</p>
+        </header>
+
+        <!-- Tool -->
+        <section class="mb-12 animate-fadeIn" id="tool">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Input -->
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h2 class="text-xl font-semibold mb-4 flex items-center">
+                        <i class="fas fa-image mr-2 text-primary"></i> Enter YouTube URL or Video ID
+                    </h2>
+
+                    <input id="videoInput" aria-label="YouTube URL or Video ID" type="text" placeholder="https://www.youtube.com/watch?v=VIDEO_ID or VIDEO_ID" class="w-full p-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" />
+
+                    <div class="flex flex-wrap gap-3 mt-4">
+                        <button id="previewBtn" class="bg-primary hover:bg-secondary text-white px-5 py-2.5 rounded-lg font-medium flex items-center">
+                            <i class="fas fa-eye mr-2"></i> Preview
+                        </button>
+                        <button id="clearBtn" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-5 py-2.5 rounded-lg font-medium flex items-center">
+                            <i class="fas fa-eraser mr-2"></i> Clear
+                        </button>
+                        <button id="helpBtn" class="bg-gray-50 border text-gray-700 px-5 py-2.5 rounded-lg font-medium flex items-center">
+                            <i class="fas fa-question-circle mr-2"></i> How to
+                        </button>
+                    </div>
+
+                    <div id="helpBox" class="hidden mt-4 text-sm text-gray-600">
+                        <strong>How it works:</strong> The tool builds public thumbnail URLs such as <code>https://i.ytimg.com/vi/VIDEO_ID/maxresdefault.jpg</code> and attempts to fetch them client-side. If the browser blocks programmatic downloads (CORS), the tool opens the image in a new tab so you can save it manually.
+                    </div>
+
+                    <div id="error" class="hidden mt-4 text-sm text-red-600" role="alert"></div>
+
+                    <div id="progressWrap" class="hidden mt-4">
+                        <div class="text-sm text-gray-600">Downloading...</div>
+                        <div class="w-full bg-gray-100 rounded-full h-2 mt-2 overflow-hidden">
+                            <div id="progressBar" class="h-2 w-0 bg-red-500"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h2 class="text-xl font-semibold mb-4 flex items-center">
+                        <i class="fas fa-th mr-2 text-primary"></i> Thumbnails & Download
+                    </h2>
+
+                    <div id="results" class="hidden">
+                        <p class="text-sm text-gray-600 mb-3">Click <strong>Download</strong> to attempt automatic download. If blocked, use <strong>Open</strong> to open the image in a new tab and save manually.</p>
+                        <div id="thumbs" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
+                    </div>
+
+                    <div id="noResults" class="mt-2 text-sm text-gray-500">Enter a YouTube video URL or ID and click Preview to view thumbnails.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Long-form SEO content -->
+        <section class="mb-12">
+            <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+                <h2 class="text-2xl font-semibold mb-4">Why download YouTube thumbnails?</h2>
+                <p class="text-gray-700 mb-4">
+                    Thumbnails are often the first visual users see when discovering a video. High-quality thumbnails are useful for:
+                </p>
+                <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
+                    <li><strong>Blog posts & guides:</strong> illustrate articles about a video or creator.</li>
+                    <li><strong>Social previews:</strong> when sharing content on platforms that require a separate image.</li>
+                    <li><strong>Design mockups:</strong> create visuals for newsletters, promotion banners, or thumbnails for other videos.</li>
+                    <li><strong>Offline archiving:</strong> keep a local copy for reference or editorial use (respect copyright).</li>
+                </ul>
+                <p class="text-gray-700">
+                    <strong>Important:</strong> thumbnails are typically owned by the video's uploader — always follow YouTube's Terms of Service and copyright rules when re-using images.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+                <h2 class="text-2xl font-semibold mb-4">How this tool works (technical)</h2>
+                <p class="text-gray-700 mb-4">
+                    YouTube exposes public thumbnail files at predictable URLs. This tool constructs those URLs and attempts to fetch the image client-side:
+                </p>
+                <pre class="bg-gray-100 p-3 rounded text-sm text-gray-700 overflow-auto"><code>https://i.ytimg.com/vi/VIDEO_ID/maxresdefault.jpg</code></pre>
+                <p class="text-gray-700 mt-3">
+                    The script attempts a fetch() and streams the response to show download progress. If the browser blocks cross-origin fetches for programmatic downloads, the tool opens the thumbnail in a new tab where standard browser save options (right-click / long-press) will work.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h2 class="text-2xl font-semibold mb-4">Best practices & SEO tips for thumbnails</h2>
+                <ol class="list-decimal list-inside text-gray-700 space-y-2">
+                    <li><strong>Use high resolution:</strong> larger thumbnails look better in social previews. Prefer <code>maxresdefault</code> if available.</li>
+                    <li><strong>Compress without losing quality:</strong> use WebP or optimized JPEG for faster loading when re-using thumbnails.</li>
+                    <li><strong>Alt text:</strong> when embedding thumbnails on a page, add descriptive <code>alt</code> text including keywords.</li>
+                    <li><strong>Proper attribution:</strong> include credit to the video creator if you reuse thumbnails.</li>
+                    <li><strong>Structured data:</strong> include Article or VideoObject schema where applicable for richer search results.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- FAQ + troubleshooting -->
+        <section class="mb-12 grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-2 bg-white rounded-xl shadow-md p-6">
+                <h2 class="text-2xl font-semibold mb-4">Frequently Asked Questions</h2>
+
+                <div class="space-y-6 text-gray-700">
+                    <div>
+                        <h3 class="text-lg font-medium">Why can't I download some thumbnails automatically?</h3>
+                        <p class="mt-2">Some browsers restrict cross-origin programmatic downloads (CORS). This tool will automatically open the image in a new tab as a fallback so you can save it manually.</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-medium">Which sizes are supported?</h3>
+                        <p class="mt-2">The tool checks: <code>maxresdefault</code>, <code>sddefault</code>, <code>hqdefault</code>, <code>mqdefault</code>, and <code>default</code>. Not every video includes max resolution.</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-medium">Is this using the YouTube API?</h3>
+                        <p class="mt-2">No. The tool constructs public thumbnail URLs and fetches them client-side — no API key required.</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-medium">Is it legal to use thumbnails?</h3>
+                        <p class="mt-2">Thumbnails are created by the uploader and may be copyrighted. Re-using thumbnails for commercial or public distribution may require permission. For editorial or fair use, include proper attribution and follow applicable laws.</p>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="space-y-6">
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h3 class="font-semibold">Quick Tips</h3>
+                    <ul class="mt-3 text-sm text-gray-700 list-disc list-inside space-y-2">
+                        <li>Try a few videos — not all have maxres thumbnails.</li>
+                        <li>On mobile, use Open → long-press → Save image.</li>
+                        <li>Rename files for SEO: <code>video-title-thumbnail.jpg</code>.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h3 class="font-semibold">Related Tools</h3>
+                    <ul class="mt-3 text-sm text-gray-700 list-disc list-inside space-y-2">
+                        <li><a class="text-primary" href="/files/image-converter.html">Image Converter</a></li>
+                        <li><a class="text-primary" href="/videos/youtube-metadata.html">YouTube Video Info (API)</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <!-- FOOTER (original) -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="../assets/img/logo.png" alt="egConvert Logo - Free Font Conversion Tools"
+                            class="w-10 h-10 rounded-lg mr-2">
+                        <span class="text-xl font-bold text-white">egConvert</span>
+                    </div>
+                    <p class="text-gray-300">The fastest and most reliable tool for converting between Unicode and
+                        Krutidev fonts online.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition duration-300">Home</a>
+                        </li>
+                        <li><a href="../pages/about-us.html"
+                                class="text-gray-300 hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="../pages/contact-us.html"
+                                class="text-gray-300 hover:text-white transition duration-300">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../pages/privacy-policy.html"
+                                class="text-gray-300 hover:text-white transition duration-300">Privacy Policy</a></li>
+                        <li><a href="../pages/terms-and-conditions.html"
+                                class="text-gray-300 hover:text-white transition duration-300">Terms & Conditions</a>
+                        </li>
+                        <li><a href="../pages/disclaimer.html"
+                                class="text-gray-300 hover:text-white transition duration-300">Disclaimer</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/" target="_blank" class="text-gray-300 hover:text-white transition duration-300"
+    aria-label="Follow us on Facebook">
+    <i class="fab fa-facebook-f text-xl"></i>
+</a>
+<a href="https://x.com/" target="_blank" class="text-gray-300 hover:text-white transition duration-300"
+    aria-label="Follow us on Twitter">
+    <i class="fab fa-twitter text-xl"></i>
+</a>
+<a href="https://www.instagram.com/" target="_blank" class="text-gray-300 hover:text-white transition duration-300"
+    aria-label="Follow us on Instagram">
+    <i class="fab fa-instagram text-xl"></i>
+</a>
+<a href="https://www.linkedin.com/" target="_blank" class="text-gray-300 hover:text-white transition duration-300"
+    aria-label="Follow us on LinkedIn">
+    <i class="fab fa-linkedin-in text-xl"></i>
+</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 egConvert. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts (logic + analytics placeholders) -->
+    <!-- Replace analytics ID with your real ones -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXX');
+    </script>
+
+    <script>
+/* DEBUG-ENHANCED thumbnail preview + download (drop into your page, replaces previous handlers) */
+
+(function(){
+
+  // helpers
+  function el(id){ return document.getElementById(id); }
+  function logPage(msg, isError=false){
+    const elLog = document.getElementById('error'); // reuse your visible error element
+    if(!elLog) return;
+    if(!msg){ elLog.classList.add('hidden'); elLog.textContent=''; return; }
+    elLog.classList.remove('hidden');
+    elLog.textContent = msg;
+    if(isError) console.error('[Thumb Debug]', msg); else console.log('[Thumb Info]', msg);
+  }
+
+  // Keep original IDs
+  const inputEl = el('videoInput');
+  const previewBtn = el('previewBtn');
+  const clearBtn = el('clearBtn');
+  const resultsWrap = el('results');
+  const thumbsWrap = el('thumbs');
+  const noResults = el('noResults');
+  const progressWrap = el('progressWrap');
+  const progressBar = el('progressBar');
+
+  // Thumbnail sizes
+  const SIZES = [
+    {key:'maxresdefault',label:'Max Resolution (maxres) - best'},
+    {key:'sddefault',label:'SD (sd) - wide'},
+    {key:'hqdefault',label:'High Quality (hq)'},
+    {key:'mqdefault',label:'Medium Quality (mq)'},
+    {key:'default',label:'Default (120x90)'}
+  ];
+
+  // ID extraction (same as before)
+  function extractVideoID(input){
+    if(!input) return null;
+    input = input.trim();
+    const possibleId = input.match(/^[A-Za-z0-9_-]{10,}$/);
+    if(possibleId) return possibleId[0];
+    const urlPatterns = [
+      /(?:v=|vi=)([A-Za-z0-9_-]{11})/,
+      /(?:youtu\.be\/)([A-Za-z0-9_-]{11})/,
+      /(?:youtube\.com\/embed\/)([A-Za-z0-9_-]{11})/,
+      /(?:youtube\.com\/watch\?.*v=)([A-Za-z0-9_-]{11})/
+    ];
+    for(const r of urlPatterns){
+      const m = input.match(r);
+      if(m && m[1]) return m[1];
+    }
+    const any = input.match(/([A-Za-z0-9_-]{11})/);
+    return any ? any[1] : null;
+  }
+
+  // Build the UI cards (no changes to markup)
+  function renderThumbnails(id){
+    thumbsWrap.innerHTML = '';
+    SIZES.forEach(s=>{
+      const url = `https://i.ytimg.com/vi/${id}/${s.key}.jpg`;
+      const card = document.createElement('div');
+      card.className = 'bg-gray-50 border border-gray-100 rounded-lg p-3 flex flex-col';
+
+      const img = document.createElement('img');
+      img.src = url;
+      img.alt = `Thumbnail ${s.key} for ${id}`;
+      img.className = 'rounded-md object-cover w-full h-40';
+      img.loading = 'lazy';
+      img.onerror = function(){
+        img.style.opacity = '0.45';
+        const n = document.createElement('div');
+        n.className='text-sm text-gray-500 mt-2';
+        n.textContent = 'Not available in this size.';
+        card.appendChild(n);
+      };
+
+      card.appendChild(img);
+
+      const meta = document.createElement('div');
+      meta.className = 'mt-3 flex items-center justify-between';
+
+      const left = document.createElement('div');
+      left.className = 'text-sm text-gray-700';
+      left.textContent = s.label;
+
+      const right = document.createElement('div');
+      right.className = 'flex items-center gap-2';
+
+      const open = document.createElement('a');
+      open.href = url;
+      open.target = '_blank';
+      open.rel = 'noopener';
+      open.className = 'text-sm text-red-600';
+      open.textContent = 'Open';
+
+      const btn = document.createElement('button');
+      btn.className = 'bg-red-600 text-white text-sm px-3 py-1 rounded-md';
+      btn.textContent = 'Download';
+
+      btn.addEventListener('click', ()=> attemptDownload(url, `${id}-${s.key}.jpg`, open));
+
+      right.append(open, btn);
+      meta.append(left, right);
+      card.appendChild(meta);
+      thumbsWrap.appendChild(card);
+    });
+  }
+
+  // Preview handler
+  previewBtn.addEventListener('click', function(){
+    try{
+      logPage('', false);
+      const id = extractVideoID(inputEl.value);
+      if(!id){
+        logPage('Could not find a valid YouTube video ID. Paste the full URL or the 11-character ID.', true);
+        return;
+      }
+      renderThumbnails(id);
+      noResults.classList.add('hidden');
+      resultsWrap.classList.remove('hidden');
+      document.title = `Thumbnails — ${id} | egConvert`;
+      console.log('[Thumb Debug] Preview rendered for ID:', id);
+    }catch(e){
+      console.error('Preview error', e);
+      logPage('Unexpected preview error — check console for details', true);
+    }
+  });
+
+  // Clear handler
+  clearBtn.addEventListener('click', function(){
+    inputEl.value = '';
+    thumbsWrap.innerHTML = '';
+    resultsWrap.classList.add('hidden');
+    noResults.classList.remove('hidden');
+    logPage('', false);
+    if(progressBar) progressBar.style.width = '0%';
+    if(progressWrap) progressWrap.classList.add('hidden');
+  });
+
+  // Attempt download with improved debug
+  async function attemptDownload(url, filename, openLink){
+    // visible debug header
+    logPage('Starting download attempt...', false);
+    console.log('[Thumb Debug] attemptDownload url=', url, 'filename=', filename);
+
+    // small helper to open fallback and show reason
+    function fallbackOpen(reason){
+      console.warn('[Thumb Debug] fallbackOpen:', reason);
+      logPage('Automatic download failed: ' + reason + '. Opening image in a new tab as fallback.', true);
+      try{
+        if(openLink){ openLink.style.fontWeight = '700'; openLink.click(); }
+        else window.open(url, '_blank');
+      }catch(e){
+        console.error('Fallback open failed', e);
+      }
+    }
+
+    try{
+      if(progressWrap) progressWrap.classList.remove('hidden');
+      if(progressBar) progressBar.style.width = '0%';
+
+      // timeout controller
+      const controller = new AbortController();
+      const timeoutMs = 15000;
+      const timeoutId = setTimeout(()=> controller.abort(), timeoutMs);
+
+      let res;
+      try{
+        res = await fetch(url, { signal: controller.signal, mode: 'cors' });
+      }catch(fetchErr){
+        clearTimeout(timeoutId);
+        console.error('[Thumb Debug] fetch threw', fetchErr);
+        // Most likely CORS or network issue
+        fallbackOpen(fetchErr && fetchErr.message ? fetchErr.message : String(fetchErr));
+        return;
+      }
+      clearTimeout(timeoutId);
+
+      console.log('[Thumb Debug] fetch response', res);
+      // If response type is 'opaque' or no body, treat as non-downloadable
+      if(!res.ok){
+        fallbackOpen('HTTP ' + res.status + ' ' + res.statusText);
+        return;
+      }
+
+      // If we don't have a readable stream, do blob fallback
+      if(!res.body){
+        console.log('[Thumb Debug] response has no body — falling back to blob');
+        try{
+          const blob = await res.blob();
+          triggerDownload(blob, filename);
+          if(progressBar) progressBar.style.width = '100%';
+          setTimeout(()=> progressWrap.classList.add('hidden'), 800);
+          logPage('Downloaded (blob fallback).', false);
+          return;
+        }catch(blobErr){
+          console.error('Blob fallback failed', blobErr);
+          fallbackOpen('Browser prevented reading response body');
+          return;
+        }
+      }
+
+      // Stream read to show progress
+      const contentLength = res.headers.get('content-length');
+      const total = contentLength ? parseInt(contentLength, 10) : null;
+      const reader = res.body.getReader();
+      const chunks = [];
+      let received = 0;
+
+      while(true){
+        const { done, value } = await reader.read();
+        if(done) break;
+        chunks.push(value);
+        received += (value && (value.length || value.byteLength)) || 0;
+        if(total && progressBar) progressBar.style.width = Math.round((received/total)*100) + '%';
+        else if(progressBar){
+          const curr = parseInt(progressBar.style.width || '0');
+          progressBar.style.width = Math.min(95, curr + 8) + '%';
+        }
+      }
+
+      // Build blob and download
+      const contentType = res.headers.get('content-type') || 'image/jpeg';
+      const blob = new Blob(chunks, { type: contentType });
+      triggerDownload(blob, filename);
+      if(progressBar) progressBar.style.width = '100%';
+      setTimeout(()=> progressWrap.classList.add('hidden'), 800);
+      logPage('Downloaded successfully.', false);
+      console.log('[Thumb Debug] download complete', filename);
+    }catch(err){
+      console.error('[Thumb Debug] unexpected error in attemptDownload', err);
+      fallbackOpen(err && err.message ? err.message : String(err));
+    }
+  }
+
+  // triggerDownload: unchanged but with logs
+  function triggerDownload(blob, filename){
+    try{
+      const a = document.createElement('a');
+      const objectUrl = URL.createObjectURL(blob);
+      a.href = objectUrl;
+      a.download = filename || 'thumbnail.jpg';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(()=> URL.revokeObjectURL(objectUrl), 1500);
+      console.log('[Thumb Debug] triggerDownload invoked', filename);
+    }catch(e){
+      console.error('[Thumb Debug] triggerDownload failed:', e);
+      try{
+        window.open(URL.createObjectURL(blob), '_blank');
+      }catch(opErr){
+        console.error('fallback open objectURL failed', opErr);
+      }
+      logPage('Automatic download failed — opened image in new tab. Check console for details.', true);
+    }
+  }
+
+})(); 
+</script>
+
+
+    <!-- FAQ Structured Data for rich results -->
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"How do I download a YouTube thumbnail?","acceptedAnswer":{"@type":"Answer","text":"Paste the YouTube URL or video ID into the tool and click Preview. Choose a size and click Download. If automatic download fails, click Open to open the image in a new tab and save it manually."}},
+        {"@type":"Question","name":"Which thumbnail sizes are available?","acceptedAnswer":{"@type":"Answer","text":"This tool checks maxresdefault, sddefault, hqdefault, mqdefault, and default. Not every video has a maxres thumbnail."}},
+        {"@type":"Question","name":"Is it legal to use thumbnails?","acceptedAnswer":{"@type":"Answer","text":"Thumbnails are often copyrighted by the uploader. Respect copyright and YouTube's Terms of Service when reusing thumbnails; seek permission for commercial uses."}}
+      ]
+    }
+    </script>
+</body>
+
+</html>
