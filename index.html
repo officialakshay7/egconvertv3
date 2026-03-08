@@ -59,35 +59,7 @@
     }
     </script>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NLWQ6H5DPK"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
 
-        gtag('config', 'G-NLWQ6H5DPK');
-    </script>
-
-    <!-- Google tag Google Ads (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17579354267">
-    </script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'AW-17579354267');
-    </script>
-
-    <!-- Event snippet for Page view conversion page -->
-    <script>
-        gtag('event', 'conversion', {
-            'send_to': 'AW-17579354267/P_x5CP23nKIbEJvRvr5B',
-            'value': 1.0,
-            'currency': 'INR'
-        });
-    </script>
 
 
     <!-- Favicon -->
@@ -100,12 +72,25 @@
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <!-- Preload critical assets -->
+    <link rel="preload" href="assets/js/unikruti.js" as="script">
+    <link rel="preload" href="assets/img/logo.webp" as="image">
 
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+    <script defer src="https://cdn.tailwindcss.com"></script>
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" /> -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
 
     <script>
         tailwind.config = {
@@ -124,10 +109,6 @@
     </script>
 
     <style>
-        
-
-        
-
         .tk {
             width: fit-content;
             display: inline-block;
@@ -206,7 +187,10 @@
 
                 <div class="flex items-center space-x-2">
                     <a href="/">
-                        <img src="assets/img/logo.png" alt="egConvert Logo" class="w-10 h-10 rounded-lg">
+                        <!-- <img src="assets/img/logo.png" alt="egConvert Logo" class="w-10 h-10 rounded-lg"> -->
+                        <!-- Add image optimization -->
+                        <img src="assets/img/logo.webp" alt="egConvert Logo" class="w-10 h-10 rounded-lg" width="40"
+                            height="40" loading="eager">
                     </a>
                     <a href="/" class="text-xl font-bold text-primary">egConvert</a>
                 </div>
@@ -256,7 +240,7 @@
                         </div>
                     </div>
 
-                    
+
                 </div>
             </div>
 
@@ -282,7 +266,7 @@
                         <a href="fonts/chanakya-to-krutidev" class="block py-2 text-sm">Chanakya to Krutidev</a>
                     </div>
 
-                    
+
                 </div>
             </div>
         </div>
@@ -642,6 +626,21 @@
         //     // this.querySelector('i')?.classList.toggle('rotate-180');
         // });
 
+    </script>
+
+    <!-- Defer all non-critical scripts -->
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-NLWQ6H5DPK"></script>
+    <script defer src="assets/js/unikruti.js"></script>
+
+    <script defer>
+        // Defer Google Analytics initialization
+        window.addEventListener('load', function () {
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-NLWQ6H5DPK');
+            gtag('config', 'AW-17579354267');
+        });
     </script>
 </body>
 
