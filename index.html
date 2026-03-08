@@ -67,16 +67,6 @@
         gtag('js', new Date());
 
         gtag('config', 'G-NLWQ6H5DPK');
-    </script>
-
-    <!-- Google tag Google Ads (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17579354267">
-    </script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
         gtag('config', 'AW-17579354267');
     </script>
 
@@ -99,14 +89,14 @@
     <!-- Preload critical resources -->
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-     <!-- <link rel="stylesheet" href="tailwind/output.css"> -->
+    <!-- <link rel="stylesheet" href="tailwind/output.css"> -->
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
 
     <script>
         tailwind.config = {
@@ -125,10 +115,6 @@
     </script>
 
     <style>
-        
-
-        
-
         .tk {
             width: fit-content;
             display: inline-block;
@@ -257,7 +243,7 @@
                         </div>
                     </div>
 
-                    
+
                 </div>
             </div>
 
@@ -283,7 +269,7 @@
                         <a href="fonts/chanakya-to-krutidev" class="block py-2 text-sm">Chanakya to Krutidev</a>
                     </div>
 
-                    
+
                 </div>
             </div>
         </div>
@@ -618,7 +604,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="assets/js/unikruti.js"></script>
+    <script defer src="assets/js/unikruti.js"></script>
 
     <script>
         // Mobile menu toggle
