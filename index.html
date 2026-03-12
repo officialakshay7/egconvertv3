@@ -89,6 +89,30 @@
         });
     </script>
 
+    <script>
+        const colors = {
+            primary: '#3B82F6',
+            secondary: '#2563EB',
+            accent: '#1D4ED8',
+            light: '#F8FAFC',
+            dark: '#1E293B'
+        };
+
+        let style = document.createElement("style");
+        let css = "";
+
+        for (const [name, value] of Object.entries(colors)) {
+
+            css += `.bg-${name}{background:${value};}`;
+            css += `.text-${name}{color:${value};}`;
+            css += `.border-${name}{border-color:${value};}`;
+
+        }
+
+        style.innerHTML = css;
+        document.head.appendChild(style);
+    </script>
+
 
     <!-- Favicon -->
     <link rel="icon" href="assets/img/logo.png" type="image/png">
@@ -102,32 +126,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+     <link rel="stylesheet" href="tailwind/output.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#3B82F6',
-                        secondary: '#2563EB',
-                        accent: '#1D4ED8',
-                        light: '#F8FAFC',
-                        dark: '#1E293B'
-                    }
-                }
-            }
-        }
-    </script>
-
     <style>
-        
-
-        
-
         .tk {
             width: fit-content;
             display: inline-block;
@@ -256,7 +260,7 @@
                         </div>
                     </div>
 
-                    
+
                 </div>
             </div>
 
@@ -282,7 +286,7 @@
                         <a href="fonts/chanakya-to-krutidev" class="block py-2 text-sm">Chanakya to Krutidev</a>
                     </div>
 
-                    
+
                 </div>
             </div>
         </div>
