@@ -60,35 +60,7 @@
     }
     </script>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NLWQ6H5DPK"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-NLWQ6H5DPK');
-    </script>
-
-    <!-- Google tag Google Ads (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17579354267">
-    </script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'AW-17579354267');
-    </script>
-
-    <!-- Event snippet for Page view conversion page -->
-<script>
-  gtag('event', 'conversion', {
-      'send_to': 'AW-17579354267/P_x5CP23nKIbEJvRvr5B',
-      'value': 1.0,
-      'currency': 'INR'
-  });
-</script>
+    
 
 
     <!-- Favicon -->
@@ -102,26 +74,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../tailwind/output.css">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" /> -->
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#3B82F6',
-                        secondary: '#2563EB',
-                        accent: '#1D4ED8',
-                        light: '#F8FAFC',
-                        dark: '#1E293B'
-                    }
-                }
-            }
-        }
-    </script>
+    
 
     <style>
         
@@ -618,6 +576,39 @@
             // Optional: rotate chevron if you add a CSS class for it
             // this.querySelector('i')?.classList.toggle('rotate-180');
         });
+    </script>
+
+    <script defer>
+        const colors = {
+            primary: '#3B82F6',
+            secondary: '#2563EB',
+            accent: '#1D4ED8',
+            light: '#F8FAFC',
+            dark: '#1E293B'
+        };
+
+        let style = document.createElement("style");
+        let css = "";
+
+        for (const [name, value] of Object.entries(colors)) {
+
+            css += `.bg-${name}{background:${value};}`;
+            css += `.text-${name}{color:${value};}`;
+            css += `.border-${name}{border-color:${value};}`;
+
+        }
+
+        style.innerHTML = css;
+        document.head.appendChild(style);
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NLWQ6H5DPK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-NLWQ6H5DPK');
     </script>
 </body>
 
