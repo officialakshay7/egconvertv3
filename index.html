@@ -157,10 +157,8 @@
     <link rel="preload" href="assets/img/logo.png" as="image">
     <link rel="icon" sizes="192x192" href="assets/img/logo.png">
 
-    <!-- Preload critical resources -->
-    <!-- <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+    <!-- Performance hints -->
+    <link rel="preload" href="/assets/font/Lexend-VariableFont_wght.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Tailwind CSS -->
     <link rel="preload" href="/tailwind/output.css" as="style" onload="this.rel='stylesheet'">
@@ -169,9 +167,24 @@
     </noscript>
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preload" href="/assets/css/all.min.css" as="style" onload="this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="/assets/css/all.min.css">
+    </noscript>
 
     <style>
+        @font-face {
+            font-family: 'Lexend';
+            src: url('/assets/font/Lexend-VariableFont_wght.woff2') format('woff2');
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+            font-family: 'Lexend', system-ui, Arial, sans-serif;
+        }
+
         .tk {
             width: fit-content;
             display: inline-block;
@@ -404,7 +417,7 @@
                         <i class="fas fa-keyboard mr-2 text-primary" aria-hidden="true"></i>
                         Unicode Text
                     </h2>
-                    <textarea rows="10"
+                    <textarea rows="7"
                         class="w-full p-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                         placeholder="Type or paste your Unicode text here..." id="unicodetext" name="unicodetext"
                         onkeyup="unicodekruti()" onpaste="unicodekruti()" onchange="unicodekruti()"></textarea>
@@ -427,7 +440,7 @@
                         <i class="fas fa-font mr-2 text-primary" aria-hidden="true"></i>
                         Krutidev Text
                     </h2>
-                    <textarea rows="10"
+                    <textarea rows="7"
                         class="w-full p-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                         placeholder="Converted Krutidev text will appear here..." id="krutitext"
                         name="krutitext"></textarea>
