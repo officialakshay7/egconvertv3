@@ -172,7 +172,11 @@
     </noscript> -->
 
     <link rel="stylesheet" href="/tailwind/output.css">
-    <link rel="stylesheet" href="/assets/css/all.min.css">
+
+    <link rel="preload" href="/assets/css/all.min.css" as="style" onload="this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="/assets/css/all.min.css">
+    </noscript>
 
     <style>
         @font-face {
