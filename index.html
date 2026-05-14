@@ -68,7 +68,7 @@
     </noscript> -->
 
     <style>
-        @font-face {
+        /* @font-face {
             font-family: 'Lexend';
             src: url('/assets/font/Lexend-VariableFont_wght.woff2') format('woff2');
             font-weight: 100 900;
@@ -88,7 +88,7 @@
             src: url('/assets/webfonts/fa-brands-400.woff2') format('woff2');
             font-weight: 400;
             font-display: swap;
-        }
+        } */
 
         * {
             font-family: 'Lexend', system-ui, Arial, sans-serif;
@@ -419,8 +419,35 @@
         <!-- Header Section -->
         <header class="text-center mb-12 animate-fadeIn">
             <h1 class="text-3xl md:text-4xl font-bold text-dark mb-4">Unicode to Krutidev Converter</h1>
-            <p class="text-lg text-gray-600 max-w-xl mx-auto">Easily convert your text from Unicode to Krutidev font
-                format with our fast and reliable online tool</p>
+            <p class="text-lg text-gray-600 max-w-xl mx-auto">
+                Convert Unicode text to Krutidev font online for free. Fast, accurate, and simple to use for Hindi typing, DTP work, printing, and official documents.
+            </p>
+
+            <!-- Feature Highlights -->
+
+            <div
+                class="flex flex-wrap items-center justify-center gap-3 md:gap-5 mt-6 text-sm md:text-base text-gray-700">
+
+                <div class="flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full">
+                    <span class="text-green-600">✔</span>
+                    <span>Works on Mobile</span>
+                </div>
+
+                <div class="hidden md:block text-gray-400">•</div>
+
+                <div class="flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full">
+                    <span class="text-green-600">✔</span>
+                    <span>No Installation Required</span>
+                </div>
+
+                <div class="hidden md:block text-gray-400">•</div>
+
+                <div class="flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full">
+                    <span class="text-green-600">✔</span>
+                    <span>100% Accuracy</span>
+                </div>
+
+            </div>
         </header>
 
         <!-- Converter Section -->
@@ -432,7 +459,7 @@
                         <i class="fas fa-keyboard mr-2 text-primary" aria-hidden="true"></i>
                         Unicode Text
                     </h2>
-                    <textarea rows="7"
+                    <textarea rows="15"
                         class="w-full p-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                         placeholder="Type or paste your Unicode text here..." id="unicodetext" name="unicodetext"
                         onkeyup="unicodekruti()" onpaste="unicodekruti()" onchange="unicodekruti()"></textarea>
@@ -455,7 +482,7 @@
                         <i class="fas fa-font mr-2 text-primary" aria-hidden="true"></i>
                         Krutidev Text
                     </h2>
-                    <textarea rows="7"
+                    <textarea rows="15"
                         class="w-full p-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                         placeholder="Converted Krutidev text will appear here..." id="krutitext"
                         name="krutitext"></textarea>
