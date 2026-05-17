@@ -242,55 +242,57 @@
             <div class="flex justify-between items-center py-3">
 
                 <div class="flex items-center space-x-2">
-                    <a href="../">
-                        <img src="../assets/img/logo.png" alt="egConvert Logo" class="w-10 h-10 rounded-lg">
+                    <a href="/">
+                        <img src="../assets/img/logo.png" alt="egConvert Logo" class="w-10 h-10 rounded-lg" width="40"
+                            height="40">
                     </a>
-                    <a href="../" class="text-xl font-bold text-primary">egConvert</a>
+                    <a href="/" class="text-xl font-bold text-primary">egConvert</a>
                 </div>
 
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
                     <button id="menu-toggle" class="text-gray-500 hover:text-primary focus:outline-none"
                         aria-label="Toggle navigation menu">
-                        <i class="fas fa-bars text-2xl"></i>
+                        <!-- <i class="fas fa-bars text-2xl"></i> -->
+                        MENU ☰
                     </button>
                 </div>
 
                 <!-- Desktop menu -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="../" class="text-primary font-medium">Home</a>
+                    <a href="/" class="text-primary font-medium">Home</a>
 
                     <div class="relative group">
                         <button class="text-gray-600 hover:text-primary font-medium flex items-center"
                             aria-expanded="false" aria-haspopup="true">
-                            Font Converter
+                            Font Converter ⏷
                             <i class="fas fa-chevron-down ml-1 text-sm"></i>
                         </button>
                         <div class="absolute hidden group-hover:block bg-white shadow-xl rounded-lg p-4 w-64 z-50">
                             <div class="grid grid-cols-1 gap-2">
-                                <a href="../" class="px-4 py-2 hover:bg-blue-50 rounded-md">Unicode to
+                                <a href="/" class="px-4 py-2 hover:bg-blue-50 rounded-md">Unicode to
                                     Krutidev</a>
-                                <a href="../fonts/krutidev-to-unicode"
+                                <a href="fonts/krutidev-to-unicode"
                                     class="px-4 py-2 hover:bg-blue-50 rounded-md">Krutidev to Unicode</a>
                                 <div class="border-t my-1"></div>
-                                <a href="../fonts/mangal-to-krutidev"
-                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Mangal
+                                <a href="fonts/mangal-to-krutidev" class="px-4 py-2 hover:bg-blue-50 rounded-md">Mangal
                                     to Krutidev</a>
-                                <a href="../fonts/krutidev-to-mangal"
+                                <a href="fonts/krutidev-to-mangal"
                                     class="px-4 py-2 hover:bg-blue-50 rounded-md">Krutidev
                                     to Mangal</a>
                                 <div class="border-t my-1"></div>
-                                <a href="../fonts/unicode-to-chanakya"
+                                <a href="fonts/unicode-to-chanakya"
                                     class="px-4 py-2 hover:bg-blue-50 rounded-md">Unicode
                                     to Chanakya</a>
-                                <a href="../fonts/chanakya-to-unicode"
+                                <a href="fonts/chanakya-to-unicode"
                                     class="px-4 py-2 hover:bg-blue-50 rounded-md">Chanakya to Unicode</a>
                                 <div class="border-t my-1"></div>
-                                <a href="../fonts/krutidev-to-chanakya"
+                                <a href="fonts/krutidev-to-chanakya"
                                     class="px-4 py-2 hover:bg-blue-50 rounded-md">Krutidev to Chanakya</a>
-                                <a href="../fonts/chanakya-to-krutidev"
+                                <a href="fonts/chanakya-to-krutidev"
                                     class="px-4 py-2 hover:bg-blue-50 rounded-md">Chanakya to Krutidev</a>
-                                <div class="border-t my-1"></div>
+
+                                <!-- referring links -->
                                 <a href="https://hindifontstyle.co.in/" class="px-4 py-2 hover:bg-blue-50 rounded-md"
                                     target="_blank" rel="noopener noreferrer">Hindi Font Style</a>
                             </div>
@@ -298,35 +300,34 @@
                     </div>
 
 
-
                 </div>
             </div>
 
             <!-- Mobile menu (hidden by default) -->
             <div id="mobile-menu" class="hidden md:hidden py-4 border-t">
-                <a href="../" class="block py-2 text-primary font-medium">Home</a>
+                <a href="/" class="block py-2 text-primary font-medium">Home</a>
 
                 <div class="py-2">
                     <button id="converter-toggle"
                         class="flex items-center justify-between w-full text-gray-600 font-medium"
                         aria-expanded="false">
-                        <span>Font Converter</span>
+                        <span>Font Converter ⏷</span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div id="converter-menu" class="hidden pl-4 mt-2">
-                        <a href="../" class="block py-2 text-sm">Unicode to Krutidev</a>
-                        <a href="../fonts/krutidev-to-unicode" class="block py-2 text-sm">Krutidev to Unicode</a>
-                        <a href="../fonts/mangal-to-krutidev" class="block py-2 text-sm">Mangal to Krutidev</a>
-                        <a href="../fonts/krutidev-to-mangal" class="block py-2 text-sm">Krutidev to Mangal</a>
-                        <a href="../fonts/unicode-to-chanakya" class="block py-2 text-sm">Unicode to Chanakya</a>
-                        <a href="../fonts/chanakya-to-unicode" class="block py-2 text-sm">Chanakya to Unicode</a>
-                        <a href="../fonts/krutidev-to-chanakya" class="block py-2 text-sm">Krutidev to Chanakya</a>
-                        <a href="../fonts/chanakya-to-krutidev" class="block py-2 text-sm">Chanakya to Krutidev</a>
+                        <a href="/" class="block py-2 text-sm">Unicode to Krutidev</a>
+                        <a href="fonts/krutidev-to-unicode" class="block py-2 text-sm">Krutidev to Unicode</a>
+                        <a href="fonts/mangal-to-krutidev" class="block py-2 text-sm">Mangal to Krutidev</a>
+                        <a href="fonts/krutidev-to-mangal" class="block py-2 text-sm">Krutidev to Mangal</a>
+                        <a href="fonts/unicode-to-chanakya" class="block py-2 text-sm">Unicode to Chanakya</a>
+                        <a href="fonts/chanakya-to-unicode" class="block py-2 text-sm">Chanakya to Unicode</a>
+                        <a href="fonts/krutidev-to-chanakya" class="block py-2 text-sm">Krutidev to Chanakya</a>
+                        <a href="fonts/chanakya-to-krutidev" class="block py-2 text-sm">Chanakya to Krutidev</a>
                         <!-- referring links -->
                         <a href="https://hindifontstyle.co.in/" class="block py-2 text-sm" target="_blank"
                             rel="noopener noreferrer">Hindi Font Style</a>
-                    </div>
 
+                    </div>
 
 
                 </div>
@@ -781,29 +782,24 @@
                         <a href="https://www.facebook.com/" target="_blank"
                             class="text-gray-300 hover:text-white transition duration-300"
                             aria-label="Follow us on Facebook">
-                            <i class="fab fa-facebook-f text-xl"></i>
+                            <i class="fab fa-facebook-f text-xl"></i>ⓕ
                         </a>
                         <a href="https://x.com/" target="_blank"
                             class="text-gray-300 hover:text-white transition duration-300"
                             aria-label="Follow us on Twitter">
-                            <i class="fab fa-twitter text-xl"></i>
-                        </a>
-                        <a href="https://www.instagram.com/" target="_blank"
-                            class="text-gray-300 hover:text-white transition duration-300"
-                            aria-label="Follow us on Instagram">
-                            <i class="fab fa-instagram text-xl"></i>
+                            <i class="fab fa-twitter text-xl"></i>𝕏
                         </a>
                         <a href="https://www.linkedin.com/" target="_blank"
                             class="text-gray-300 hover:text-white transition duration-300"
                             aria-label="Follow us on LinkedIn">
-                            <i class="fab fa-linkedin-in text-xl"></i>
+                            <i class="fab fa-linkedin-in text-xl"></i>[in]
                         </a>
                     </div>
                 </div>
             </div>
 
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 egConvert. All rights reserved.</p>
+                <p>&copy; 2026 egConvert. All rights reserved.</p>
             </div>
         </div>
     </footer>
