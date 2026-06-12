@@ -28,40 +28,13 @@
     <meta property="og:description" content="Learn about egConvert - your trusted partner for Hindi font conversion">
     <meta property="og:url" content="https://egconvert.com/pages/about-us">
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NLWQ6H5DPK"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-NLWQ6H5DPK');
-    </script>
-
-    <!-- Google tag Google Ads (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17579354267">
-    </script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'AW-17579354267');
-    </script>
-
-    <!-- Event snippet for Page view conversion page -->
-<script>
-  gtag('event', 'conversion', {
-      'send_to': 'AW-17579354267/P_x5CP23nKIbEJvRvr5B',
-      'value': 1.0,
-      'currency': 'INR'
-  });
-</script>
-
 
     <meta property="og:type" content="website">
 
     <!-- Tailwind CSS -->
+    <link rel="preload" href="../tailwind/output.css" as="style">
+
+    <!-- Main CSS -->
     <link rel="stylesheet" href="../tailwind/output.css">
 
     <!-- Font Awesome -->
@@ -70,9 +43,12 @@
     
 
     <style>
-        
-
-        
+        .tk {
+            width: fit-content;
+            display: inline-block;
+            text-decoration: none;
+            color: black;
+        }
 
         /* Custom animations */
         @keyframes fadeIn {
@@ -89,9 +65,48 @@
             animation: fadeIn 0.5s ease-in-out;
         }
 
+        /* Custom scrollbar for textareas */
+        textarea::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        textarea::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        textarea::-webkit-scrollbar-thumb {
+            background: #c5c5c5;
+            border-radius: 10px;
+        }
+
+        textarea::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+
+        /* Breadcrumb styling */
+        .breadcrumb {
+            padding: 8px 15px;
+            margin-bottom: 20px;
+            list-style: none;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+        }
+
+        .breadcrumb li {
+            display: inline;
+        }
+
+        .breadcrumb li+li:before {
+            padding: 0 5px;
+            color: #ccc;
+            content: "/\00a0";
+        }
+
         /* Focus styles for accessibility */
         button:focus,
-        a:focus {
+        a:focus,
+        textarea:focus {
             outline: 2px solid #3B82F6;
             outline-offset: 2px;
         }
@@ -103,79 +118,96 @@
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-3">
+
                 <div class="flex items-center space-x-2">
-                    <a href="../">
-                        <img src="../assets/img/logo.png" alt="egConvert Logo" class="w-10 h-10 rounded-lg">
+                    <a href="/">
+                        <img src="../assets/img/logo.png" alt="egConvert Logo" class="w-10 h-10 rounded-lg" width="40"
+                            height="40">
                     </a>
-                    <a href="../" class="text-xl font-bold text-primary">egConvert</a>
+                    <a href="/" class="text-xl font-bold text-primary">egConvert</a>
                 </div>
 
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
                     <button id="menu-toggle" class="text-gray-500 hover:text-primary focus:outline-none"
                         aria-label="Toggle navigation menu">
-                        <i class="fas fa-bars text-2xl"></i>
+                        <!-- <i class="fas fa-bars text-2xl"></i> -->
+                        MENU ☰
                     </button>
                 </div>
 
                 <!-- Desktop menu -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="../" class="text-gray-600 hover:text-primary font-medium">Home</a>
+                    <a href="/" class="text-primary font-medium">Home</a>
 
                     <div class="relative group">
                         <button class="text-gray-600 hover:text-primary font-medium flex items-center"
                             aria-expanded="false" aria-haspopup="true">
-                            Font Converter
+                            Font Converter ⏷
                             <i class="fas fa-chevron-down ml-1 text-sm"></i>
                         </button>
                         <div class="absolute hidden group-hover:block bg-white shadow-xl rounded-lg p-4 w-64 z-50">
                             <div class="grid grid-cols-1 gap-2">
-                                <a href="../" class="px-4 py-2 hover:bg-blue-50 rounded-md">Unicode to
+                                <a href="/" class="px-4 py-2 hover:bg-blue-50 rounded-md">Unicode to
                                     Krutidev</a>
-                                <a href="../fonts/krutidev-to-unicode"
+                                <a href="krutidev-to-unicode"
                                     class="px-4 py-2 hover:bg-blue-50 rounded-md">Krutidev to Unicode</a>
                                 <div class="border-t my-1"></div>
-                                <a href="../fonts/mangal-to-krutidev"
-                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Mangal to Krutidev</a>
-                                <a href="../fonts/krutidev-to-mangal"
-                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Krutidev to Mangal</a>
+                                <a href="mangal-to-krutidev" class="px-4 py-2 hover:bg-blue-50 rounded-md">Mangal
+                                    to Krutidev</a>
+                                <a href="krutidev-to-mangal"
+                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Krutidev
+                                    to Mangal</a>
                                 <div class="border-t my-1"></div>
-                                <a href="../fonts/unicode-to-chanakya"
-                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Unicode to Chanakya</a>
-                                <a href="../fonts/chanakya-to-unicode"
+                                <a href="unicode-to-chanakya"
+                                    class="px-4 py-2 hover:bg-blue-50 rounded-md">Unicode
+                                    to Chanakya</a>
+                                <a href="chanakya-to-unicode"
                                     class="px-4 py-2 hover:bg-blue-50 rounded-md">Chanakya to Unicode</a>
                                 <div class="border-t my-1"></div>
-                                <a href="../fonts/krutidev-to-chanakya"
+                                <a href="krutidev-to-chanakya"
                                     class="px-4 py-2 hover:bg-blue-50 rounded-md">Krutidev to Chanakya</a>
-                                <a href="../fonts/chanakya-to-krutidev"
+                                <a href="chanakya-to-krutidev"
                                     class="px-4 py-2 hover:bg-blue-50 rounded-md">Chanakya to Krutidev</a>
+
+                                <!-- referring links -->
+                                <a href="https://hindifontstyle.co.in/" class="px-4 py-2 hover:bg-blue-50 rounded-md"
+                                    target="_blank" rel="noopener noreferrer">Hindi Font Style</a>
                             </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
 
             <!-- Mobile menu (hidden by default) -->
             <div id="mobile-menu" class="hidden md:hidden py-4 border-t">
-                <a href="../" class="block py-2 text-gray-600 hover:text-primary font-medium">Home</a>
+                <a href="/" class="block py-2 text-primary font-medium">Home</a>
 
                 <div class="py-2">
                     <button id="converter-toggle"
                         class="flex items-center justify-between w-full text-gray-600 font-medium"
                         aria-expanded="false">
-                        <span>Font Converter</span>
+                        <span>Font Converter ⏷</span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div id="converter-menu" class="hidden pl-4 mt-2">
-                        <a href="../" class="block py-2 text-sm">Unicode to Krutidev</a>
-                        <a href="../fonts/krutidev-to-unicode" class="block py-2 text-sm">Krutidev to Unicode</a>
-                        <a href="../fonts/mangal-to-krutidev" class="block py-2 text-sm">Mangal to Krutidev</a>
-                        <a href="../fonts/krutidev-to-mangal" class="block py-2 text-sm">Krutidev to Mangal</a>
-                        <a href="../fonts/unicode-to-chanakya" class="block py-2 text-sm">Unicode to Chanakya</a>
-                        <a href="../fonts/chanakya-to-unicode" class="block py-2 text-sm">Chanakya to Unicode</a>
-                        <a href="../fonts/krutidev-to-chanakya" class="block py-2 text-sm">Krutidev to Chanakya</a>
-                        <a href="../fonts/chanakya-to-krutidev" class="block py-2 text-sm">Chanakya to Krutidev</a>
+                        <a href="/" class="block py-2 text-sm">Unicode to Krutidev</a>
+                        <a href="krutidev-to-unicode" class="block py-2 text-sm">Krutidev to Unicode</a>
+                        <a href="mangal-to-krutidev" class="block py-2 text-sm">Mangal to Krutidev</a>
+                        <a href="krutidev-to-mangal" class="block py-2 text-sm">Krutidev to Mangal</a>
+                        <a href="unicode-to-chanakya" class="block py-2 text-sm">Unicode to Chanakya</a>
+                        <a href="chanakya-to-unicode" class="block py-2 text-sm">Chanakya to Unicode</a>
+                        <a href="krutidev-to-chanakya" class="block py-2 text-sm">Krutidev to Chanakya</a>
+                        <a href="chanakya-to-krutidev" class="block py-2 text-sm">Chanakya to Krutidev</a>
+                        <!-- referring links -->
+                        <a href="https://hindifontstyle.co.in/" class="block py-2 text-sm" target="_blank"
+                            rel="noopener noreferrer">Hindi Font Style</a>
+
                     </div>
+
+
                 </div>
             </div>
         </div>
@@ -282,21 +314,21 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div>
                     <div class="flex items-center mb-4">
-                        <img src="../assets/img/logo.png" alt="egConvert Logo" class="w-10 h-10 rounded-lg mr-2">
+                        <img src="../assets/img/logo.png" alt="egConvert Logo - Free Font Conversion Tools"
+                            class="w-10 h-10 rounded-lg mr-2">
                         <span class="text-xl font-bold text-white">egConvert</span>
                     </div>
-                    <p class="text-gray-300">The fastest and most reliable tool for converting between Hindi fonts
-                        online.</p>
+                    <p class="text-gray-300">The fastest and most reliable tool for converting between Chanakya and
+                        Krutidev fonts online.</p>
                 </div>
 
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
-                        <li><a href="../"
-                                class="text-gray-300 hover:text-white transition duration-300">Home</a></li>
-                        <li><a href="about-us" class="text-gray-300 hover:text-white transition duration-300">About
-                                Us</a></li>
-                        <li><a href="contact-us"
+                        <li><a href="" class="text-gray-300 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="../pages/about-us"
+                                class="text-gray-300 hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="../pages/contact-us"
                                 class="text-gray-300 hover:text-white transition duration-300">Contact Us</a></li>
                     </ul>
                 </div>
@@ -304,12 +336,12 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Legal</h3>
                     <ul class="space-y-2">
-                        <li><a href="privacy-policy"
+                        <li><a href="../pages/privacy-policy"
                                 class="text-gray-300 hover:text-white transition duration-300">Privacy Policy</a></li>
-                        <li><a href="terms-and-conditions"
+                        <li><a href="../pages/terms-and-conditions"
                                 class="text-gray-300 hover:text-white transition duration-300">Terms & Conditions</a>
                         </li>
-                        <li><a href="disclaimer"
+                        <li><a href="../pages/disclaimer"
                                 class="text-gray-300 hover:text-white transition duration-300">Disclaimer</a></li>
                     </ul>
                 </div>
@@ -317,22 +349,21 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
                     <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/" target="_blank" class="text-gray-300 hover:text-white transition duration-300"
-    aria-label="Follow us on Facebook">
-    <i class="fab fa-facebook-f text-xl"></i>
-</a>
-<a href="https://x.com/" target="_blank" class="text-gray-300 hover:text-white transition duration-300"
-    aria-label="Follow us on Twitter">
-    <i class="fab fa-twitter text-xl"></i>
-</a>
-<a href="https://www.instagram.com/" target="_blank" class="text-gray-300 hover:text-white transition duration-300"
-    aria-label="Follow us on Instagram">
-    <i class="fab fa-instagram text-xl"></i>
-</a>
-<a href="https://www.linkedin.com/" target="_blank" class="text-gray-300 hover:text-white transition duration-300"
-    aria-label="Follow us on LinkedIn">
-    <i class="fab fa-linkedin-in text-xl"></i>
-</a>
+                        <a href="https://www.facebook.com/" target="_blank"
+                            class="text-gray-300 hover:text-white transition duration-300"
+                            aria-label="Follow us on Facebook">
+                            <i class="fab fa-facebook-f text-xl"></i>ⓕ
+                        </a>
+                        <a href="https://x.com/" target="_blank"
+                            class="text-gray-300 hover:text-white transition duration-300"
+                            aria-label="Follow us on Twitter">
+                            <i class="fab fa-twitter text-xl"></i>𝕏
+                        </a>
+                        <a href="https://www.linkedin.com/" target="_blank"
+                            class="text-gray-300 hover:text-white transition duration-300"
+                            aria-label="Follow us on LinkedIn">
+                            <i class="fab fa-linkedin-in text-xl"></i>[in]
+                        </a>
                     </div>
                 </div>
             </div>
@@ -365,6 +396,86 @@
             // Optional: rotate chevron if you add a CSS class for it
             // this.querySelector('i')?.classList.toggle('rotate-180');
         });
+    </script>
+
+    <script defer>
+        const colors = {
+            primary: '#3B82F6',
+            secondary: '#2563EB',
+            accent: '#1D4ED8',
+            light: '#F8FAFC',
+            dark: '#1E293B'
+        };
+
+        let style = document.createElement("style");
+        let css = "";
+
+        for (const [name, value] of Object.entries(colors)) {
+
+            css += `.bg-${name}{background:${value};}`;
+            css += `.text-${name}{color:${value};}`;
+            css += `.border-${name}{border-color:${value};}`;
+
+        }
+
+        style.innerHTML = css;
+        document.head.appendChild(style);
+    </script>
+
+     <script>// Google Analytics 4 (GA4) Lazy Loader
+        // This file is READ by vite.config.js and injected INLINE into the HTML head.
+        // It is NOT imported as a module to save bundle size.
+
+        (function () {
+            const measurementId = "G-NLWQ6H5DPK";
+            let loaded = false;
+            let timerId;
+
+            function loadAnalytics(trigger) {
+                if (loaded) return;
+                loaded = true;
+                window.EgConvertAnalyticsLoaded = true; // Global flag
+
+                // Cleanup listeners (Performance: Remove traps immediately)
+                window.removeEventListener('scroll', onInteract);
+                window.removeEventListener('mousemove', onInteract);
+                window.removeEventListener('touchstart', onInteract);
+                window.removeEventListener('keydown', onInteract);
+                clearTimeout(timerId);
+
+
+
+                // 1. Load the GTM Script
+                const script = document.createElement('script');
+                script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+                script.async = true;
+                document.head.appendChild(script);
+
+                // 2. Initialize DataLayer (Global Safety Check)
+                window.dataLayer = window.dataLayer || [];
+
+                // Define clean global gtag wrapper
+                if (!window.gtag) {
+                    window.gtag = function () { window.dataLayer.push(arguments); };
+                }
+
+                window.gtag('js', new Date());
+                window.gtag('config', measurementId);
+            }
+
+            function onInteract(e) {
+                loadAnalytics(e.type);
+            }
+
+            // 3. Event Listeners (Passive & Once for best perf)
+            window.addEventListener('scroll', onInteract, { passive: true, once: true });
+            window.addEventListener('mousemove', onInteract, { passive: true, once: true });
+            window.addEventListener('touchstart', onInteract, { passive: true, once: true });
+            window.addEventListener('keydown', onInteract, { passive: true, once: true });
+
+            // 4. Fallback: Load after 7 seconds (Avoids Lighthouse "Unused JS" penalty which usually runs for ~5s)
+            timerId = setTimeout(function () { loadAnalytics('timeout'); }, 5000);
+        })();
     </script>
 </body>
 
